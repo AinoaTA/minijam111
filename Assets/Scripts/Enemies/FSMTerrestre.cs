@@ -2,33 +2,24 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class FSMTerrestre : MonoBehaviour
+public class FSMTerrestre : MonoBehaviour, IHit
 {
-    private BlackBoardTerrestre blackBoard;
+    private BlackBoardTerrestre blackboard;
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
-    bool looking, attacked;
 
-    public Action beingAttacked;
 
-    private void OnEnable()
-    {
-        beingAttacked += BeingAttacked;
-    }
-    private void OnDisable()
-    {
-        beingAttacked -= BeingAttacked;
-    }
+    
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, blackBoard.minDetectDistance);
+            Gizmos.DrawWireSphere(transform.position, blackboard.minDetectDistance);
 
-            float angle = blackBoard.angle;
-            float rayRange = blackBoard.minDetectDistance;
+            float angle = blackboard.angle;
+            float rayRange = blackboard.minDetectDistance;
             float halfFOV = angle / 2.0f;
             float coneDirection = 180;
 
@@ -38,7 +29,7 @@ public class FSMTerrestre : MonoBehaviour
             Vector3 upRayDirection = upRayRotation * -transform.forward * rayRange;
             Vector3 downRayDirection = downRayRotation * -transform.forward * rayRange;
 
-            if (!looking)
+            if (!blackboard.looking)
                 Gizmos.color = Color.red;
             else
                 Gizmos.color = Color.green;
@@ -49,40 +40,44 @@ public class FSMTerrestre : MonoBehaviour
 
     private void Awake()
     {
-        blackBoard = GetComponent<BlackBoardTerrestre>();
+        blackboard = GetComponent<BlackBoardTerrestre>();
     }
 
     private void Start()
     {
+       
         state = StateMachine.IDLE;
         ChangeState(StateMachine.IDLE);
     }
 
     private void Update()
     {
+        if (!blackboard.enabledGame)
+            return;
         switch (state)
         {
             case StateMachine.IDLE:
                 ChangeState(StateMachine.WALK);
                 break;
             case StateMachine.WALK:
-                if (!blackBoard.navMeshAgent.hasPath)
+                if (!blackboard.navMeshAgent.hasPath)
                 {
-                    blackBoard.navMeshAgent.SetDestination(blackBoard.GetInterestingPoint());
-                }else if (looking)
+                    blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
+                }
+                else if (blackboard.looking)
                 {
                     print("looking");
                     ChangeState(StateMachine.ATTACK);
                 }
                 break;
             case StateMachine.HIT:
-                if (!looking)
+                if (!blackboard.looking)
                 {
-                    if (blackBoard.navMeshAgent.remainingDistance != Mathf.Infinity &&
-                        blackBoard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
-                        blackBoard.navMeshAgent.remainingDistance == 0)
+                    if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
+                        blackboard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
+                        blackboard.navMeshAgent.remainingDistance == 0)
                     {
-                        StartCoroutine(WaitForSomething(blackBoard.waitTimer, delegate
+                        StartCoroutine(WaitForSomething(blackboard.waitTimer, delegate
                         {
                             ChangeState(StateMachine.IDLE);
                         }));
@@ -94,18 +89,18 @@ public class FSMTerrestre : MonoBehaviour
                 }
                 break;
             case StateMachine.ATTACK:
-               
-                if (Vector3.Distance(transform.position, blackBoard.player.transform.position) >= blackBoard.minFollowingDistance)
+                blackboard.attacking = true;
+                if (Vector3.Distance(transform.position, blackboard.player.transform.position) >= blackboard.minFollowingDistance)
                 {
                     ChangeState(StateMachine.IDLE);
                 }
-                if (!looking)
+                if (!blackboard.looking)
                 {
-                    if (blackBoard.navMeshAgent.remainingDistance!=Mathf.Infinity && 
-                        blackBoard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
-                        blackBoard.navMeshAgent.remainingDistance == 0) 
+                    if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
+                        blackboard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
+                        blackboard.navMeshAgent.remainingDistance == 0)
                     {
-                        StartCoroutine(WaitForSomething(blackBoard.waitTimer, delegate 
+                        StartCoroutine(WaitForSomething(blackboard.waitTimer, delegate
                         {
                             ChangeState(StateMachine.IDLE);
                         }));
@@ -113,15 +108,16 @@ public class FSMTerrestre : MonoBehaviour
                 }
                 else
                 {
-                    Vector3 direction = blackBoard.player.transform.position - transform.position;
+                    Vector3 direction = blackboard.player.transform.position - transform.position;
                     direction.y = 0;
                     direction.Normalize();
-                    Vector3 desplacement = blackBoard.player.transform.position - direction * blackBoard.minApproximation;
-                    blackBoard.navMeshAgent.SetDestination(desplacement);
+                    Vector3 desplacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
+                    blackboard.navMeshAgent.SetDestination(desplacement);
                 }
 
-                if (Vector3.Distance(transform.position, blackBoard.player.transform.position) <= blackBoard.minAttackDistance && !attacked)
+                if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
                 {
+                    blackboard.playerHeal.TakeDamage();
                     StartCoroutine(AttackRecovery());
                 }
                 break;
@@ -134,47 +130,42 @@ public class FSMTerrestre : MonoBehaviour
 
     private void Looking()
     {
-        if (Vector3.Distance(transform.position, blackBoard.player.transform.position) < blackBoard.minDetectDistance)
+        if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)
         {
             float angle;
-            Ray ray = new Ray(transform.position, blackBoard.player.transform.position - transform.position);
-            if (Physics.Raycast(ray, out RaycastHit hit, blackBoard.minDetectDistance, blackBoard.layerMask))
+            Ray ray = new Ray(transform.position, blackboard.player.transform.position - transform.position);
+            if (Physics.Raycast(ray, out RaycastHit hit, blackboard.minDetectDistance, blackboard.layerMask))
             {
                 if (hit.collider.CompareTag("Player"))
                 {
                     angle = Vector3.Angle(hit.point - transform.position, transform.forward);
-                    if (angle < blackBoard.angle / 2)
+                    if (angle < blackboard.angle / 2)
                     {
-                        looking = true;
+                        blackboard.looking = true;
                     }
                 }
                 else
-                    looking = false;
+                    blackboard.looking = false;
             }
         }
     }
-    private void BeingAttacked()
-    {
-        print("being hit");
-        ChangeState(StateMachine.HIT);
-    
-    }
+
     private void ChangeState(StateMachine newState)
     {
         switch (newState)
         {
             case StateMachine.IDLE:
 
-                blackBoard.navMeshAgent.SetDestination(blackBoard.GetInterestingPoint());
+                blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
                 break;
             case StateMachine.WALK:
                 break;
             case StateMachine.HIT:
-                Vector3 direction = blackBoard.player.transform.position - transform.position;
+                Vector3 direction = blackboard.player.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                Vector3 desplacement = blackBoard.player.transform.position - direction * blackBoard.minApproximation;
-                blackBoard.navMeshAgent.SetDestination(desplacement);
+                Vector3 desplacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
+                blackboard.navMeshAgent.SetDestination(desplacement);
                 break;
             case StateMachine.ATTACK:
 
@@ -192,7 +183,8 @@ public class FSMTerrestre : MonoBehaviour
             case StateMachine.HIT:
                 break;
             case StateMachine.ATTACK:
-                looking = false;
+                blackboard.attacking = false;
+                blackboard.looking = false;
                 break;
             default:
                 break;
@@ -206,13 +198,19 @@ public class FSMTerrestre : MonoBehaviour
     {
         yield return new WaitForSeconds(s);
         action?.Invoke();
-    
+
     }
 
     IEnumerator AttackRecovery()
     {
-        attacked = true;
         yield return new WaitForSeconds(1);
-        attacked = false;
+        blackboard.attacking = false;
+    }
+
+    public void Attacked()
+    {
+        if (blackboard.attacking)
+            return;
+        ChangeState(StateMachine.HIT);
     }
 }
