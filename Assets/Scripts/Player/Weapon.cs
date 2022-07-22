@@ -1,15 +1,14 @@
 using System;
 using Colors;
-using Projectiles;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
     public class Weapon : MonoBehaviour
     {
-        [SerializeField] private ColorType projectileColor = 0;
+        [SerializeField] private ColorTypes projectileColor = 0;
         [SerializeField] private bool shootFromFirePoint;
+        [SerializeField] private GameObject weaponModel;
         
         [Header("Projectiles Data")]
         [SerializeField] private GameObject projectilePrefab;
@@ -19,12 +18,14 @@ namespace Player
         [SerializeField] private Transform firePoint;
         
         private Renderer _projectileRenderer;
+        private Renderer _weaponRenderer;
         private Camera _mainCamera;
 
         private void Start()
         {
             _mainCamera = Camera.main;
             _projectileRenderer = projectilePrefab.GetComponent<Renderer>();
+            _weaponRenderer = weaponModel.GetComponent<Renderer>();
 
             ApplyMaterialToProjectile();
             
@@ -34,13 +35,13 @@ namespace Player
         {
             var material = GetMaterial(); 
             _projectileRenderer.material = material;
+            _weaponRenderer.material = material;
         }
 
         public void ChangeWeaponColor()
         {
             projectileColor = GetNextColor(projectileColor);
             ApplyMaterialToProjectile();
-            Debug.Log(projectileColor);
         }
         
         public void InstantiateProjectile()
@@ -54,27 +55,28 @@ namespace Player
             {
                 var centerScreen = new Vector3(Screen.height / 2, Screen.width / 2, 0);
                 firePosition = _mainCamera.ScreenToWorldPoint(centerScreen);
-                firePosition += _mainCamera.transform.forward * 0.5f;
+                firePosition += _mainCamera.transform.forward * 0.1f;
             }
             
             var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
-            projectile.GetComponent<PlayerProjectile>().projectileColor = projectileColor;
+            
+            projectile.GetComponent<ColorEntity>().ColorType = projectileColor;
         }
 
         private Material GetMaterial()
         {
             var material = projectileColor switch
             {
-                ColorType.Green => greenProjectileMaterial,
-                ColorType.Blue => blueProjectileMaterial,
-                ColorType.Red => redProjectileMaterial,
+                ColorTypes.Green => greenProjectileMaterial,
+                ColorTypes.Blue => blueProjectileMaterial,
+                ColorTypes.Red => redProjectileMaterial,
                 _ => throw new ArgumentOutOfRangeException()
             };
 
             return material;
         }
 
-        private ColorType GetNextColor(ColorType color)
+        private ColorTypes GetNextColor(ColorTypes color)
         {
             /*
             var colors = Enum.GetValues(typeof(Color));
@@ -86,7 +88,7 @@ namespace Player
             return (Color) colors.GetValue(0);
             */
             
-            var colors = (ColorType[])Enum.GetValues(typeof(ColorType));
+            var colors = (ColorTypes[])Enum.GetValues(typeof(ColorTypes));
             var i = Array.IndexOf(colors, color) + 1;
             return (colors.Length==i) ? colors[0] : colors[i];
         }
