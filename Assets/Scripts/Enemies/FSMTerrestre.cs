@@ -8,7 +8,7 @@ public class FSMTerrestre : MonoBehaviour
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
-    bool looking, attacked;
+    bool looking, attacked, attacking;
 
     public Action beingAttacked;
 
@@ -69,7 +69,8 @@ public class FSMTerrestre : MonoBehaviour
                 if (!blackBoard.navMeshAgent.hasPath)
                 {
                     blackBoard.navMeshAgent.SetDestination(blackBoard.GetInterestingPoint());
-                }else if (looking)
+                }
+                else if (looking)
                 {
                     print("looking");
                     ChangeState(StateMachine.ATTACK);
@@ -94,18 +95,18 @@ public class FSMTerrestre : MonoBehaviour
                 }
                 break;
             case StateMachine.ATTACK:
-               
+                attacking = true;
                 if (Vector3.Distance(transform.position, blackBoard.player.transform.position) >= blackBoard.minFollowingDistance)
                 {
                     ChangeState(StateMachine.IDLE);
                 }
                 if (!looking)
                 {
-                    if (blackBoard.navMeshAgent.remainingDistance!=Mathf.Infinity && 
+                    if (blackBoard.navMeshAgent.remainingDistance != Mathf.Infinity &&
                         blackBoard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
-                        blackBoard.navMeshAgent.remainingDistance == 0) 
+                        blackBoard.navMeshAgent.remainingDistance == 0)
                     {
-                        StartCoroutine(WaitForSomething(blackBoard.waitTimer, delegate 
+                        StartCoroutine(WaitForSomething(blackBoard.waitTimer, delegate
                         {
                             ChangeState(StateMachine.IDLE);
                         }));
@@ -155,9 +156,10 @@ public class FSMTerrestre : MonoBehaviour
     }
     private void BeingAttacked()
     {
-        print("being hit");
+        if (attacking)
+            return;
         ChangeState(StateMachine.HIT);
-    
+
     }
     private void ChangeState(StateMachine newState)
     {
@@ -192,6 +194,7 @@ public class FSMTerrestre : MonoBehaviour
             case StateMachine.HIT:
                 break;
             case StateMachine.ATTACK:
+                attacking = false;
                 looking = false;
                 break;
             default:
@@ -206,7 +209,7 @@ public class FSMTerrestre : MonoBehaviour
     {
         yield return new WaitForSeconds(s);
         action?.Invoke();
-    
+
     }
 
     IEnumerator AttackRecovery()

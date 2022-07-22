@@ -17,7 +17,6 @@ namespace Colors
             }
             else
             {
-
                 if (gameObject.CompareTag("Enemy"))
                     {
                     GetComponent<FSMTerrestre>().beingAttacked?.Invoke();
