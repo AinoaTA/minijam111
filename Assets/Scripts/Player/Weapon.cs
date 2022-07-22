@@ -8,6 +8,7 @@ namespace Player
     {
         [SerializeField] private ColorTypes projectileColor = 0;
         [SerializeField] private bool shootFromFirePoint;
+        [SerializeField] private GameObject weaponModel;
         
         [Header("Projectiles Data")]
         [SerializeField] private GameObject projectilePrefab;
@@ -17,12 +18,14 @@ namespace Player
         [SerializeField] private Transform firePoint;
         
         private Renderer _projectileRenderer;
+        private Renderer _weaponRenderer;
         private Camera _mainCamera;
 
         private void Start()
         {
             _mainCamera = Camera.main;
             _projectileRenderer = projectilePrefab.GetComponent<Renderer>();
+            _weaponRenderer = weaponModel.GetComponent<Renderer>();
 
             ApplyMaterialToProjectile();
             
@@ -32,13 +35,13 @@ namespace Player
         {
             var material = GetMaterial(); 
             _projectileRenderer.material = material;
+            _weaponRenderer.material = material;
         }
 
         public void ChangeWeaponColor()
         {
             projectileColor = GetNextColor(projectileColor);
             ApplyMaterialToProjectile();
-            Debug.Log(projectileColor);
         }
         
         public void InstantiateProjectile()
