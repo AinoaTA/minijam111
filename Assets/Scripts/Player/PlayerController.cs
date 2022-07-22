@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -161,7 +162,7 @@ namespace Player
             //Shoot
             if (Input.GetMouseButtonDown(0))
             {
-                
+                _weapon.InstantiateProjectile();
             }
         }
     }
