@@ -1,18 +1,16 @@
+using Colors;
 using UnityEngine;
 
 namespace Player
 {
     public class Weapon : MonoBehaviour
     {
-    
-        void Start()
-        {
-        
-        }
+        [SerializeField] private ColorsController.Color projectileColor = 0;
 
-        void Update()
+        public void ChangeWeaponColor()
         {
-        
+            projectileColor = ColorsController.Instance.GetNextColor(projectileColor);
+            Debug.Log(projectileColor);
         }
     }
 }

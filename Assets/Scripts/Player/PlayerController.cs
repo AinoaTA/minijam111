@@ -39,7 +39,7 @@ namespace Player
         private const KeyCode DebugLockAngleKeyCode = KeyCode.I;
         private const KeyCode DebugLockKeyCode = KeyCode.O;
         private bool _angleLocked = true;
-#endif
+    #endif
     
         private void Awake()
         {
@@ -122,10 +122,11 @@ namespace Player
             }
 
             speedMultiplier = Input.GetKey(SprintKeyCode) ? 1.5f : 1f;
-
-            if (Input.GetKey(ReloadKeyCode))
+            
+            //Reload
+            if (Input.GetKeyDown(ReloadKeyCode))
             {
-
+                _weapon.ChangeWeaponColor();
             }
 
             movement.Normalize();
