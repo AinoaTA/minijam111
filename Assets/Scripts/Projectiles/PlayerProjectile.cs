@@ -1,4 +1,3 @@
-using Colors;
 using UnityEngine;
 
 namespace Projectiles
@@ -7,8 +6,7 @@ namespace Projectiles
     {
         [SerializeField] private float projectileSpeed = 20f;
         [SerializeField] private float secondsToDestroy = 10f;
-
-        public ColorType projectileColor = 0;
+        
         private void Start()
         {
             if (Camera.main != null)

@@ -1,28 +1,32 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Colors
 {
     public class ColorEntity : MonoBehaviour, IColor
     {
-        public ColorType ColorType { get; }
-        public void RunInteraction(ColorType entityFromColor, ColorType entityToColor)
+        public ColorTypes ColorType;
+
+        public void RunInteraction(GameObject otherEntity)
         {
-            if (entityFromColor == entityToColor)
+            var otherEntityColor = otherEntity.GetComponent<ColorEntity>().ColorType;
+            if ( ColorType == otherEntityColor)
             {
-                //KILL ENTITIES
+                Destroy(otherEntity);
+                Destroy(gameObject);
             }
             else
             {
                 //POWER UP ENTITY
             }
         }
-
+        
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.TryGetComponent(out IColor coloredEntity))
+            if (collision.collider.TryGetComponent(out ColorEntity coloredEntity))
             {
-                coloredEntity.RunInteraction(ColorType, coloredEntity.ColorType);
+                RunInteraction(collision.gameObject);
             }
         }
     }
