@@ -1,14 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyEnemy : MonoBehaviour, IHit
 {
-    public BlackBoardEnemy blackboard;
+    BlackBoardEnemy blackboard;
 
     public enum StateMachine { FLY, ATTACK }
     public StateMachine state;
     Vector3 dir;
+    public GameObject prefabProyectile;
 
     public void Attacked()
     {
@@ -17,6 +17,11 @@ public class FlyEnemy : MonoBehaviour, IHit
     void Awake()
     {
         blackboard = GetComponent<BlackBoardEnemy>();
+    
+    }
+    private void Start()
+    {
+        ChangeState(StateMachine.FLY);
     }
 
     void Update()
@@ -27,28 +32,36 @@ public class FlyEnemy : MonoBehaviour, IHit
         {
             case StateMachine.FLY:
 
-                //if(blackboard.attacking)
-                //    return;
-
-                dir = blackboard.player.transform.position - transform.position;
-
+                dir = (blackboard.player.transform.position - transform.position).normalized;
+               
                 Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
                 blackboard.navMeshAgent.speed = blackboard.speed;
                 blackboard.navMeshAgent.SetDestination(destination);
 
-                dir.y = 0;
-                Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
-                transform.rotation = rot;
+                transform.LookAt(blackboard.player.transform.position);
 
+                //dir.y = 0;
+                //Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
+                //transform.rotation = rot;
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
                 {
-                    blackboard.playerHeal.TakeDamage();
-                    StartCoroutine(AttackRecovery());
+                    ChangeState(StateMachine.ATTACK);
                 }
 
                 break;
             case StateMachine.ATTACK:
+
+                if (!blackboard.attacked)
+                    return;
+
+                //blackboard.playerHeal.TakeDamage();
+                //StartCoroutine(AttackRecovery());
+
+                if (Vector3.Distance(transform.position, blackboard.player.transform.position) >= blackboard.minDetectDistance) 
+                {
+                    ChangeState(StateMachine.FLY);
+                }
                 break;
             default:
                 break;
@@ -57,7 +70,6 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     public void ChangeState(StateMachine newstate)
     {
-
         switch (newstate)
         {
             case StateMachine.FLY:

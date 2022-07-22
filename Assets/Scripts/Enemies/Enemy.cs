@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IHit
     {
         if (!blackboard.enabledGame || blackboard.attacking)
             return;
-        dir = blackboard.player.transform.position - transform.position;
+        dir = (blackboard.player.transform.position - transform.position).normalized;
 
         Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
         blackboard.navMeshAgent.speed = blackboard.speed;
