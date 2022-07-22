@@ -7,7 +7,6 @@ namespace Colors
     public class ColorEntity : MonoBehaviour, IColor
     {
         public ColorTypes ColorType;
-
         public void RunInteraction(GameObject otherEntity)
         {
             var otherEntityColor = otherEntity.GetComponent<ColorEntity>().ColorType;
@@ -18,6 +17,11 @@ namespace Colors
             }
             else
             {
+
+                if (gameObject.CompareTag("Enemy"))
+                    {
+                    GetComponent<FSMTerrestre>().beingAttacked?.Invoke();
+                }
                 //POWER UP ENTITY
             }
         }
@@ -27,6 +31,7 @@ namespace Colors
             if (collision.collider.TryGetComponent(out ColorEntity coloredEntity))
             {
                 RunInteraction(collision.gameObject);
+               
             }
         }
     }

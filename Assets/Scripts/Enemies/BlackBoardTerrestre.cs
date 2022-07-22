@@ -19,6 +19,12 @@ public class BlackBoardTerrestre : MonoBehaviour
     public GameObject player;
    [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
 
+    public void GetDamage()
+    { 
+    
+    
+    }
+
     private void Start()
     {
         for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)

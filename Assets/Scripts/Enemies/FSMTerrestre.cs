@@ -6,10 +6,20 @@ public class FSMTerrestre : MonoBehaviour
 {
     private BlackBoardTerrestre blackBoard;
 
-    public enum StateMachine { IDLE, WALK, LOOKING, ATTACK }
+    public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
     bool looking, attacked;
 
+    public Action beingAttacked;
+
+    private void OnEnable()
+    {
+        beingAttacked += BeingAttacked;
+    }
+    private void OnDisable()
+    {
+        beingAttacked -= BeingAttacked;
+    }
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -62,6 +72,24 @@ public class FSMTerrestre : MonoBehaviour
                 }else if (looking)
                 {
                     print("looking");
+                    ChangeState(StateMachine.ATTACK);
+                }
+                break;
+            case StateMachine.HIT:
+                if (!looking)
+                {
+                    if (blackBoard.navMeshAgent.remainingDistance != Mathf.Infinity &&
+                        blackBoard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
+                        blackBoard.navMeshAgent.remainingDistance == 0)
+                    {
+                        StartCoroutine(WaitForSomething(blackBoard.waitTimer, delegate
+                        {
+                            ChangeState(StateMachine.IDLE);
+                        }));
+                    }
+                }
+                else
+                {
                     ChangeState(StateMachine.ATTACK);
                 }
                 break;
@@ -125,6 +153,12 @@ public class FSMTerrestre : MonoBehaviour
             }
         }
     }
+    private void BeingAttacked()
+    {
+        print("being hit");
+        ChangeState(StateMachine.HIT);
+    
+    }
     private void ChangeState(StateMachine newState)
     {
         switch (newState)
@@ -135,7 +169,12 @@ public class FSMTerrestre : MonoBehaviour
                 break;
             case StateMachine.WALK:
                 break;
-            case StateMachine.LOOKING:
+            case StateMachine.HIT:
+                Vector3 direction = blackBoard.player.transform.position - transform.position;
+                direction.y = 0;
+                direction.Normalize();
+                Vector3 desplacement = blackBoard.player.transform.position - direction * blackBoard.minApproximation;
+                blackBoard.navMeshAgent.SetDestination(desplacement);
                 break;
             case StateMachine.ATTACK:
 
@@ -150,7 +189,7 @@ public class FSMTerrestre : MonoBehaviour
                 break;
             case StateMachine.WALK:
                 break;
-            case StateMachine.LOOKING:
+            case StateMachine.HIT:
                 break;
             case StateMachine.ATTACK:
                 looking = false;
