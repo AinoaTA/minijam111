@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,9 @@ public class HealSystem : MonoBehaviour
     public int currHealth;
     public Image[] hearts;
     public Sprite broken, heal;
-
+    bool cooldown;
+    public float cooldownTimer = 2f;
+    public Animator damage;
     private void Start()
     {
         currHealth = maxHealth;
@@ -21,9 +24,19 @@ public class HealSystem : MonoBehaviour
         }
         else
         {
+            if (cooldown)
+                return;
+            damage.Play("Damage");
+            StartCoroutine(Cooldown());
             hearts[currHealth - 1].sprite = broken;
             currHealth--;
         }
+    }
+    IEnumerator Cooldown()
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(cooldownTimer);
+        cooldown = false;
     }
     public void GetHealing()
     {
@@ -36,7 +49,6 @@ public class HealSystem : MonoBehaviour
 
     private void Death()
     {
-
         Time.timeScale = 0;
     }
 }
