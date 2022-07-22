@@ -15,6 +15,7 @@ public class BlackBoardTerrestre : MonoBehaviour
     public float speed;
     public LayerMask layerMask;
     public float raycastDistance;
+    public float damage;
     [Range(0,360)]
     public float angle;
     public GameObject parentInterestingPoints;
