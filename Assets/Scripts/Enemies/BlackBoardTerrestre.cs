@@ -20,11 +20,15 @@ public class BlackBoardTerrestre : MonoBehaviour
     public float angle;
     public GameObject parentInterestingPoints;
     public GameObject player;
-   [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
+    public HealSystem playerHeal;
+    [HideInInspector]public bool enabledGame=true;
+    [HideInInspector] public bool looking, attacked, attacking;
+    [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHeal = player.GetComponent<HealSystem>();
         if (normalEnemy)
             return;
         for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)
