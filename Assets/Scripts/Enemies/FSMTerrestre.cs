@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FSMTerrestre : MonoBehaviour, IHit
 {
-    private BlackBoardTerrestre blackboard;
+    private BlackBoardEnemy blackboard;
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
@@ -40,7 +40,7 @@ public class FSMTerrestre : MonoBehaviour, IHit
 
     private void Awake()
     {
-        blackboard = GetComponent<BlackBoardTerrestre>();
+        blackboard = GetComponent<BlackBoardEnemy>();
     }
 
     private void Start()

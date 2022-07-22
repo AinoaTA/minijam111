@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHit
 {
-    private BlackBoardTerrestre blackboard;
-    private float distance;
+    private BlackBoardEnemy blackboard;
     Vector3 dir;
     
 
@@ -15,7 +14,7 @@ public class Enemy : MonoBehaviour, IHit
 
     private void Awake()
     {
-        blackboard = GetComponent<BlackBoardTerrestre>();
+        blackboard = GetComponent<BlackBoardEnemy>();
     }
 
     private void Update()
