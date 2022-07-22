@@ -2,14 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class FSMTerrestre : MonoBehaviour, IHit
+public class FSMFirstBoss : MonoBehaviour, IHit
 {
-    private BlackBoardTerrestre blackboard;
+    private BlackBoardEnemy blackboard;
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
-
-
     
     private void OnDrawGizmos()
     {
@@ -40,7 +38,7 @@ public class FSMTerrestre : MonoBehaviour, IHit
 
     private void Awake()
     {
-        blackboard = GetComponent<BlackBoardTerrestre>();
+        blackboard = GetComponent<BlackBoardEnemy>();
     }
 
     private void Start()
@@ -66,7 +64,6 @@ public class FSMTerrestre : MonoBehaviour, IHit
                 }
                 else if (blackboard.looking)
                 {
-                    print("looking");
                     ChangeState(StateMachine.ATTACK);
                 }
                 break;
@@ -118,7 +115,7 @@ public class FSMTerrestre : MonoBehaviour, IHit
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
                 {
                     blackboard.playerHeal.TakeDamage();
-                    StartCoroutine(AttackRecovery());
+                    StartCoroutine(blackboard.AttackRecovery());
                 }
                 break;
             default:
@@ -200,13 +197,6 @@ public class FSMTerrestre : MonoBehaviour, IHit
         action?.Invoke();
 
     }
-
-    IEnumerator AttackRecovery()
-    {
-        yield return new WaitForSeconds(1);
-        blackboard.attacking = false;
-    }
-
     public void Attacked()
     {
         if (blackboard.attacking)

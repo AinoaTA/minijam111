@@ -1,8 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BlackBoardTerrestre : MonoBehaviour
+public class BlackBoardEnemy : MonoBehaviour
 {
     [SerializeField]bool normalEnemy;
     public NavMeshAgent navMeshAgent;
@@ -20,8 +21,8 @@ public class BlackBoardTerrestre : MonoBehaviour
     public float angle;
     public GameObject parentInterestingPoints;
     public GameObject player;
-    public HealSystem playerHeal;
-    [HideInInspector]public bool enabledGame=true;
+    [HideInInspector] public HealSystem playerHeal;
+    [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacked, attacking;
     [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
 
@@ -38,5 +39,11 @@ public class BlackBoardTerrestre : MonoBehaviour
     }
 
     public Vector3 GetInterestingPoint() => allInterestingPoints[Random.Range(0, allInterestingPoints.Count)].position;
-    
+
+    public IEnumerator AttackRecovery()
+    {
+        attacked = true;
+        yield return new WaitForSeconds(1);
+        attacked = false;
+    }
 }
