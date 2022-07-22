@@ -29,6 +29,9 @@ namespace Player
         private const KeyCode JumpKeyCode = KeyCode.Space;
         private const KeyCode ReloadKeyCode = KeyCode.R;
         
+        [Header("Shooting")] 
+        [SerializeField] private float timeBetweenShots = 0.3f;
+        private float _shootingTimer;
         private Weapon _weapon;
 
         //Gravity
@@ -70,6 +73,8 @@ namespace Player
             }
         #endif
 
+            _shootingTimer += Time.deltaTime;
+            
             var mouseAxisY = Input.GetAxis("Mouse Y");
             var mouseAxisX = Input.GetAxis("Mouse X");
 
@@ -160,9 +165,10 @@ namespace Player
             }
 
             //Shoot
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && _shootingTimer >= timeBetweenShots)
             {
                 _weapon.InstantiateProjectile();
+                _shootingTimer = 0f;
             }
         }
     }
