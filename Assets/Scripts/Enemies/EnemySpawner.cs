@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnPositionsRadius;
     [SerializeField] private int enemiesPerSpawnPosition;
     
-    [Header("Spawn Data")]
+    [Header("Player Spawn Data")]
     [SerializeField] private GameObject player;
     [SerializeField] private float minDistance;
     [SerializeField] private float maxDistance;
