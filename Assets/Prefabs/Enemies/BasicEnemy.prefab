@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 815536148657197126}
   - component: {fileID: 815536148657197129}
   - component: {fileID: 815536148657197124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BasicEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2484da01fe286d498688c4644d3f9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalEnemy: 1
   navMeshAgent: {fileID: 815536148657197125}
   minDetectDistance: 10
   minAttackDistance: 2
@@ -162,9 +163,9 @@ MonoBehaviour:
   speed: 4.5
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   raycastDistance: 10
-  angle: 120
+  angle: 40
   parentInterestingPoints: {fileID: 0}
   player: {fileID: 0}
   allInterestingPoints: []

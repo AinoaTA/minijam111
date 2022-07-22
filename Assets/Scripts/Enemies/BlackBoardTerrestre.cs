@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class BlackBoardTerrestre : MonoBehaviour
 {
+    [SerializeField]bool normalEnemy;
     public NavMeshAgent navMeshAgent;
     public float minDetectDistance;
     public float minAttackDistance;
@@ -28,7 +29,10 @@ public class BlackBoardTerrestre : MonoBehaviour
 
     private void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
+        if (normalEnemy)
+            return;
         for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)
         {
             allInterestingPoints.Add(parentInterestingPoints.transform.GetChild(a));

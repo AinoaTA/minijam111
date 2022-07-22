@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2484da01fe286d498688c4644d3f9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalEnemy: 0
   navMeshAgent: {fileID: 9359911}
   minDetectDistance: 10
   minAttackDistance: 2
@@ -359,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815536148872962704, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_Layer
@@ -709,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815536148872962704, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_Layer
@@ -1717,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 815536148872962704, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_Layer
@@ -1732,10 +1733,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 815536147070795665, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 815536148657197122, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1781,17 +1778,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 815536148657197127, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: angle
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 815536148657197127, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2003788427}
-    - target: {fileID: 815536148657197127, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 815536148657197127, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: parentInterestingPoints
       value: 
@@ -1799,18 +1788,6 @@ PrefabInstance:
     - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 815536148657197128, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815536148872962704, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
