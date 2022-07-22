@@ -595,7 +595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267174819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.253, z: 1.039}
+  m_LocalPosition: {x: 0, y: -0.097, z: 1.039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 45054866}
@@ -765,12 +765,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileColor: 0
+  shootFromFirePoint: 0
   projectilePrefab: {fileID: 7084570971485763851, guid: 309c4eb260d452e489c76f5137312b36, type: 3}
   greenProjectileMaterial: {fileID: 2100000, guid: 4580e4e2af01dd34591fc78f1665c9b5, type: 2}
   blueProjectileMaterial: {fileID: 2100000, guid: fadd1871f99bb1e4e8fdbf591cedb5cf, type: 2}
   redProjectileMaterial: {fileID: 2100000, guid: 334623f3b64e3d043af4e0c33e4b4395, type: 2}
   firePoint: {fileID: 1267174820}
-  projectileSpeed: 10
+  projectileSpeed: 30
 --- !u!4 &2003788432
 Transform:
   m_ObjectHideFlags: 0
