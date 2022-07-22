@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -38,5 +39,11 @@ public class BlackBoardEnemy : MonoBehaviour
     }
 
     public Vector3 GetInterestingPoint() => allInterestingPoints[Random.Range(0, allInterestingPoints.Count)].position;
-    
+
+    public IEnumerator AttackRecovery()
+    {
+        attacked = true;
+        yield return new WaitForSeconds(1);
+        attacked = false;
+    }
 }

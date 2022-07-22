@@ -6,11 +6,13 @@ public class HealSystem : MonoBehaviour
 {
     public int maxHealth = 3;
     public int currHealth;
+    public float cooldownTimer = 2f;
+
+    [Header("UI")]
     public Image[] hearts;
     public Sprite broken, heal;
-    bool cooldown;
-    public float cooldownTimer = 2f;
     public Animator damage;
+    bool cooldown;
     private void Start()
     {
         currHealth = maxHealth;
@@ -19,9 +21,7 @@ public class HealSystem : MonoBehaviour
     public void TakeDamage()
     {
         if (currHealth <= 0)
-        {
             Death();
-        }
         else
         {
             if (cooldown)

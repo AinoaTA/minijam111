@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour, IHit
     private BlackBoardEnemy blackboard;
     Vector3 dir;
     
-
     public void Attacked()
     {
         print("nada aun");
@@ -31,18 +30,10 @@ public class Enemy : MonoBehaviour, IHit
         Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
         transform.rotation = rot;
 
-
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
         {
             blackboard.playerHeal.TakeDamage();
-            StartCoroutine(AttackRecovery());
+            StartCoroutine(blackboard.AttackRecovery());
         }
-    }
-
-    IEnumerator AttackRecovery()
-    {
-        blackboard.attacked = true;
-        yield return new WaitForSeconds(1);
-        blackboard. attacked = false;
     }
 }

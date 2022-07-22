@@ -38,11 +38,11 @@ public class FlyEnemy : MonoBehaviour, IHit
                 blackboard.navMeshAgent.speed = blackboard.speed;
                 blackboard.navMeshAgent.SetDestination(destination);
 
-                transform.LookAt(blackboard.player.transform.position);
+                 transform.GetChild(0).transform.LookAt(blackboard.player.transform.position);
 
-                //dir.y = 0;
+              //  dir.y = 0;
                 //Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
-                //transform.rotation = rot;
+                //transform.GetChild(0).transform.rotation = rot;
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
                 {
@@ -56,7 +56,7 @@ public class FlyEnemy : MonoBehaviour, IHit
                     return;
 
                 //blackboard.playerHeal.TakeDamage();
-                //StartCoroutine(AttackRecovery());
+                //StartCoroutine(blackboard.AttackRecovery());
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) >= blackboard.minDetectDistance) 
                 {
@@ -90,12 +90,5 @@ public class FlyEnemy : MonoBehaviour, IHit
                 break;
         }
         state = newstate;
-    }
-
-    IEnumerator AttackRecovery()
-    {
-        blackboard.attacked = true;
-        yield return new WaitForSeconds(1);
-        blackboard.attacked = false;
     }
 }
