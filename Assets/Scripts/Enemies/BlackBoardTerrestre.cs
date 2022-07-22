@@ -21,15 +21,8 @@ public class BlackBoardTerrestre : MonoBehaviour
     public GameObject player;
    [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
 
-    public void GetDamage()
-    { 
-    
-    
-    }
-
     private void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player");
         if (normalEnemy)
             return;
