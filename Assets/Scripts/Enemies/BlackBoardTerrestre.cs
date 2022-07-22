@@ -11,6 +11,7 @@ public class BlackBoardTerrestre : MonoBehaviour
     public float minApproximation;
     public float timer;
     public float waitTimer;
+    public float speed;
     public LayerMask layerMask;
     public float raycastDistance;
     [Range(0,360)]
@@ -27,6 +28,7 @@ public class BlackBoardTerrestre : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)
         {
             allInterestingPoints.Add(parentInterestingPoints.transform.GetChild(a));

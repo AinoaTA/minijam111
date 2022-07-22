@@ -2,24 +2,13 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class FSMTerrestre : MonoBehaviour
+public class FSMTerrestre : MonoBehaviour, IHit
 {
     private BlackBoardTerrestre blackBoard;
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
     bool looking, attacked, attacking;
-
-    public Action beingAttacked;
-
-    private void OnEnable()
-    {
-        beingAttacked += BeingAttacked;
-    }
-    private void OnDisable()
-    {
-        beingAttacked -= BeingAttacked;
-    }
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -154,13 +143,7 @@ public class FSMTerrestre : MonoBehaviour
             }
         }
     }
-    private void BeingAttacked()
-    {
-        if (attacking)
-            return;
-        ChangeState(StateMachine.HIT);
 
-    }
     private void ChangeState(StateMachine newState)
     {
         switch (newState)
@@ -217,5 +200,12 @@ public class FSMTerrestre : MonoBehaviour
         attacked = true;
         yield return new WaitForSeconds(1);
         attacked = false;
+    }
+
+    public void Attacked()
+    {
+        if (attacking)
+            return;
+        ChangeState(StateMachine.HIT);
     }
 }

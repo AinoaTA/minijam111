@@ -18,8 +18,8 @@ namespace Colors
             else
             {
                 if (gameObject.CompareTag("Enemy"))
-                    {
-                    GetComponent<FSMTerrestre>().beingAttacked?.Invoke();
+                {
+                    GetComponent<IHit>().Attacked();
                 }
                 //POWER UP ENTITY
             }
