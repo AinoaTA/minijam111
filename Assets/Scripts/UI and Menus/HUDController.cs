@@ -8,30 +8,30 @@ namespace UI_and_Menus
     {
         [Header("Health Parts")]
         public Image[] hearts;
-        public Sprite broken, heal;
 
         [Header("Projectile Parts")]
         [SerializeField] private GameObject currentProjectileColor;
-
+        [SerializeField] private Sprite[] colorsSprites;
+        [SerializeField] private Image selectedColor;
         public void UpdateHearts(int health, bool isDamaged)
         {
-            if (isDamaged)
-                hearts[health].sprite = broken;
-            else
-                hearts[health].sprite = heal;
+            hearts[health].gameObject.SetActive(!isDamaged);
         }
 
         public void UpdateColor(ColorTypes color)
         {
+            selectedColor.sprite = colorsSprites[(int)color];
+
             switch (color)
             {
                 case ColorTypes.Green:
-
-                    break;
-                case ColorTypes.Red:
-
+                    
                     break;
                 case ColorTypes.Blue:
+
+                    break;
+
+                case ColorTypes.Red:
 
                     break;
             }
