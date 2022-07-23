@@ -160,6 +160,8 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         if (_changeColorTimer >= changeColorTime)
         {
             _colorEntity.colorType = ColorEntity.GetNextColor(_colorEntity.colorType);
+            blackboard.ChangeMaterial(_colorEntity.colorType);
+            _changeColorTimer = 0f;
         }
         
         if (_invulnerable)
@@ -179,15 +181,12 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private void Attack()
     {
         var random = Random.Range(0, 2);
-        Debug.Log(random);
         switch (random)
         {
             case 0:
-                Debug.Log("Punch");
                 animator.SetTrigger(Punch);
                 break;
             case 1:
-                Debug.Log("Kick");
                 animator.SetTrigger(Kick);
                 break;
         }

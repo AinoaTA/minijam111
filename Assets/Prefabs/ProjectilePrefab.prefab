@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23259791d2209b4b982144664d02437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 30
+  projectileSpeed: 50
   secondsToDestroy: 10
   greenProjectileMaterial: {fileID: 2100000, guid: 4580e4e2af01dd34591fc78f1665c9b5, type: 2}
   blueProjectileMaterial: {fileID: 2100000, guid: fadd1871f99bb1e4e8fdbf591cedb5cf, type: 2}
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ecba8c615206d46b470e6aa86a5ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorType: 0
+  colorType: 0
