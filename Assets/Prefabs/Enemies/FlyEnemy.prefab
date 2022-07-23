@@ -174,6 +174,12 @@ MonoBehaviour:
   looking: 0
   attacked: 0
   attacking: 0
+  isBoss: 0
+  allEyesMaterial:
+  - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
+  - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
+  - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
+  eyeMaterial: {fileID: 858256327514861847}
 --- !u!114 &3329119531955133869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,5 +374,10 @@ PrefabInstance:
 --- !u!4 &1991170793804843640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
+  m_PrefabInstance: {fileID: 2029071970701913491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &858256327514861847 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
   m_PrefabInstance: {fileID: 2029071970701913491}
   m_PrefabAsset: {fileID: 0}

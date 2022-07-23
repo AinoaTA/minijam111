@@ -1,5 +1,6 @@
 using System.Collections;
 using Others;
+using Colors;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -25,13 +26,13 @@ public class BlackBoardEnemy : MonoBehaviour
     [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacked, attacking;
 
-    [HideInInspector] public bool isBoss;
-    [SerializeField] private Material greenEyeMaterial;
-    [SerializeField] private Material blueEyeMaterial;
-    [SerializeField] private Material redEyeMaterial;
-    [SerializeField] private Material eyesMaterial;
+     [SerializeField] private bool isBoss;
+    [SerializeField] private Material[] allEyesMaterial;
+    [SerializeField] private Renderer eyeMaterial;
+    private ColorEntity colorEntity;
     private void Awake()
     {
+        colorEntity = GetComponent<ColorEntity>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<HealthSystem>();
@@ -39,7 +40,8 @@ public class BlackBoardEnemy : MonoBehaviour
 
     private void Start()
     {
-        
+        if(!isBoss)
+        eyeMaterial.material = allEyesMaterial[(int)colorEntity.colorType];
     }
     public IEnumerator AttackRecovery()
     {
