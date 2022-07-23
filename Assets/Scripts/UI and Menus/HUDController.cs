@@ -22,20 +22,11 @@ namespace UI_and_Menus
         [SerializeField] private CanvasGroup gameOver;
 
         [HideInInspector] public bool isPause;
+        [HideInInspector] public bool isGameOver;
         private void Awake()
         {
             GameManager.gameManager.hudController = this;
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
-            {
-                isPause = true;
-                Unlock();
-                ShowCanvasGroup(pauseMenu);
-            }
-        }
-
         public void ShowCanvasGroup(CanvasGroup canvas) 
         {
             canvas.alpha = 1;
@@ -90,7 +81,7 @@ namespace UI_and_Menus
             ShowCanvasGroup(gameOver);
             Unlock();
             Time.timeScale = 0;
-            isPause = true;
+            isGameOver = true;
         }
     }
 }

@@ -12,6 +12,15 @@ namespace UI_and_Menus
             canvas = GetComponent<CanvasGroup>();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameManager.hudController.isGameOver)
+            {
+                GameManager.gameManager.hudController.isPause = true;
+                GameManager.gameManager.hudController.Unlock();
+                GameManager.gameManager.hudController.ShowCanvasGroup(canvas);
+            }
+        }
         public void OnResumePressed()
         {
             GameManager.gameManager.hudController.HideCanvasGroup(canvas);
