@@ -8,7 +8,12 @@ public class Enemy : MonoBehaviour, IHit
 
     public void Attacked()
     {
-        print("nada aun");
+        Destroy(gameObject);
+    }
+
+    public void BeingHit()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void Awake()
@@ -18,22 +23,14 @@ public class Enemy : MonoBehaviour, IHit
 
     private void Update()
     {
-        if (!blackboard.enabledGame || blackboard.attacking)
+        if (!blackboard.enabledGame || blackboard.hit)
             return;
 
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)
         {
-            dir = (blackboard.player.transform.position - transform.position).normalized;
+            GetDir();
 
-            Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
-            blackboard.navMeshAgent.speed = blackboard.speed;
-            blackboard.navMeshAgent.SetDestination(destination);
-
-            dir.y = 0;
-            Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
-            transform.rotation = rot;
-
-            if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
+            if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
             {
                 blackboard.playerHealth.TakeDamage();
                 StartCoroutine(blackboard.AttackRecovery());
@@ -42,12 +39,33 @@ public class Enemy : MonoBehaviour, IHit
         else
         {
             if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
-                        blackboard.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
-                        blackboard.navMeshAgent.remainingDistance == 0)
+                           blackboard.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
+                           blackboard.navMeshAgent.remainingDistance == 0)
             {
-                Vector3 dest =blackboard.RandomNavSphere(transform.position, blackboard.minWanderDistance, 1);
-                blackboard.navMeshAgent.SetDestination(dest);
+                {
+                    if (blackboard.attacking)
+                    {
+                        GetDir();
+                    }
+                    else
+                    {
+                        Vector3 dest = blackboard.RandomNavSphere(transform.position, blackboard.minWanderDistance, 1);
+                        blackboard.navMeshAgent.SetDestination(dest);
+                    }
+                }
             }
         }
+
+    }
+    private void GetDir()
+    {
+        dir = (blackboard.player.transform.position - transform.position).normalized;
+
+        Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
+        blackboard.navMeshAgent.speed = blackboard.speed;
+        blackboard.navMeshAgent.SetDestination(destination);
+        dir.y = 0;
+        Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
+        transform.rotation = rot;
     }
 }

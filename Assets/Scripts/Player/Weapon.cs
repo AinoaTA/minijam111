@@ -29,7 +29,7 @@ namespace Player
         {
             weaponAnimator.Play("Idle");
             _mainCamera = Camera.main;
-            _weaponRenderer = weaponModel.GetComponent<Renderer>();
+            //_weaponRenderer = weaponModel.GetComponent<Renderer>();
             hud.UpdateColor(projectileColor);
             //ApplyMaterialToProjectile();
         }

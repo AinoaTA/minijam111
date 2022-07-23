@@ -110,7 +110,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 }
                 break;
             case StateMachine.ATTACK:
-                blackboard.attacking = true;
+                blackboard.hit = true;
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) >= blackboard.minFollowingDistance)
                 {
                     ChangeState(StateMachine.IDLE);
@@ -136,12 +136,12 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                     blackboard.navMeshAgent.SetDestination(displacement);
                 }
 
-                if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
+                if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
                 {
                     animator.SetBool(Idle, true);
                     Attack();
                 }
-                else if (blackboard.attacked && Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance)
+                else if (blackboard.attacking && Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance)
                 {
                     animator.SetBool(Idle, true);
                 }
@@ -188,7 +188,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 break;
         }
 
-        blackboard.attacked = true;
+        blackboard.attacking = true;
         //blackboard.playerHealth.TakeDamage();
         StartCoroutine(blackboard.AttackRecovery());
     }
@@ -256,7 +256,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             case StateMachine.HIT:
                 break;
             case StateMachine.ATTACK:
-                blackboard.attacking = false;
+                blackboard.hit = false;
                 blackboard.looking = false;
                 break;
             default:
@@ -285,7 +285,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         Damage();
         
-        if (blackboard.attacking)
+        if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);
     }
@@ -294,5 +294,12 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         animator.SetTrigger(Death);
         Destroy(gameObject);
+    }
+
+    public void BeingHit()
+    {
+        if (blackboard.hit)
+            return;
+        ChangeState(StateMachine.HIT);
     }
 }

@@ -24,7 +24,7 @@ public class BlackBoardEnemy : MonoBehaviour
     [HideInInspector]public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame=true;
-    [HideInInspector] public bool looking, attacked, attacking;
+    [HideInInspector] public bool looking, attacking, hit;
 
      [SerializeField] private bool isBoss;
     [SerializeField] private Material[] allEyesMaterial;
@@ -40,14 +40,14 @@ public class BlackBoardEnemy : MonoBehaviour
 
     private void Start()
     {
-        if(!isBoss)
+        
         eyeMaterial.material = allEyesMaterial[(int)colorEntity.colorType];
     }
     public IEnumerator AttackRecovery()
     {
-        attacked = true;
+        attacking = true;
         yield return new WaitForSeconds(recoveryAttackTime);
-        attacked = false;
+        attacking = false;
     }
     public Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
     {

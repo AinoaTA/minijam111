@@ -13,16 +13,19 @@ namespace Colors
             var otherEntityColor = otherEntity.GetComponent<ColorEntity>().colorType;
             if ( colorType == otherEntityColor)
             {
-                Destroy(gameObject);
-                
                 if (otherEntity.CompareTag("Enemy"))
                 {
                     otherEntity.GetComponent<IHit>().Attacked();
                 }
+                
             }
             else
             {
-                
+                if (otherEntity.CompareTag("Enemy"))
+                {
+                    otherEntity.GetComponent<IHit>().BeingHit();
+                }
+               
                 //POWER UP ENTITY
             }
         }
