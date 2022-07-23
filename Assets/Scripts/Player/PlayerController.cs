@@ -169,7 +169,10 @@ namespace Player
             {
                 _weapon.InstantiateProjectile();
                 _shootingTimer = 0f;
-            }
+            } 
+                _weapon.SetVelocityIdle(Mathf.Clamp(_characterController.velocity.magnitude, 0.2f, 1.2f));
+            
+            
         }
     }
 }

@@ -11,27 +11,27 @@ namespace Player
         [SerializeField] private HUDController hud;
         [SerializeField] private bool shootFromFirePoint;
         [SerializeField] private GameObject weaponModel;
-        
+        [SerializeField] private Animator weaponAnimator;
         [Header("Projectiles Data")]
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform firePoint;
-        
+
         [Header("Materials")]
         [SerializeField] private Material greenProjectileMaterial;
         [SerializeField] private Material blueProjectileMaterial;
         [SerializeField] private Material redProjectileMaterial;
 
-        
+
         private Renderer _weaponRenderer;
         private Camera _mainCamera;
 
         private void Start()
         {
+            weaponAnimator.Play("Idle");
             _mainCamera = Camera.main;
             _weaponRenderer = weaponModel.GetComponent<Renderer>();
             hud.UpdateColor(projectileColor);
-           //ApplyMaterialToProjectile();
-            
+            //ApplyMaterialToProjectile();
         }
 
         private void ApplyMaterialToProjectile()
@@ -47,8 +47,17 @@ namespace Player
             // ApplyMaterialToProjectile();
         }
 
+        public void SetVelocityIdle(float speed)
+        {
+            if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                weaponAnimator.speed = speed;
+            else
+                weaponAnimator.speed = 1;
+        }
         public void InstantiateProjectile()
         {
+            weaponAnimator.Play("Shoot");
+
             Vector3 firePosition;
             if (shootFromFirePoint)
             {
@@ -60,15 +69,15 @@ namespace Player
                 firePosition = _mainCamera.ScreenToWorldPoint(centerScreen);
                 firePosition += _mainCamera.transform.forward * 0.1f;
             }
-            
+
             var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
-            
+
             projectile.GetComponent<ColorEntity>().colorType = projectileColor;
         }
 
         private ColorTypes GetNextColor(ColorTypes color)
         {
-            
+
             /*
             var colors = Enum.GetValues(typeof(Color));
             var colorIndex = (int)color + 1;
@@ -78,13 +87,13 @@ namespace Player
             
             return (Color) colors.GetValue(0);
             */
-            
+
             var colors = (ColorTypes[])Enum.GetValues(typeof(ColorTypes));
             var i = Array.IndexOf(colors, color) + 1;
-            
-            return (colors.Length==i) ? colors[0] : colors[i];
+
+            return (colors.Length == i) ? colors[0] : colors[i];
         }
-        
+
         private Material GetMaterial()
         {
             var material = projectileColor switch
