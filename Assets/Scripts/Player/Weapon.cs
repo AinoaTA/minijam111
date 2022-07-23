@@ -42,7 +42,7 @@ namespace Player
 
         public void ChangeWeaponColor()
         {
-            projectileColor = GetNextColor(projectileColor);
+            projectileColor = ColorEntity.GetNextColor(projectileColor);
             hud.UpdateColor(projectileColor);
             // ApplyMaterialToProjectile();
         }
@@ -71,27 +71,8 @@ namespace Player
             }
 
             var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
-
+        
             projectile.GetComponent<ColorEntity>().colorType = projectileColor;
-        }
-
-        private ColorTypes GetNextColor(ColorTypes color)
-        {
-
-            /*
-            var colors = Enum.GetValues(typeof(Color));
-            var colorIndex = (int)color + 1;
-            
-            if(colorIndex < colors.Length)
-                return (Color) colors.GetValue(colorIndex);
-            
-            return (Color) colors.GetValue(0);
-            */
-
-            var colors = (ColorTypes[])Enum.GetValues(typeof(ColorTypes));
-            var i = Array.IndexOf(colors, color) + 1;
-
-            return (colors.Length == i) ? colors[0] : colors[i];
         }
 
         private Material GetMaterial()

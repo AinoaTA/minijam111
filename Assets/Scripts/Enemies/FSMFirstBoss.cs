@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Colors;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -11,12 +12,14 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
 
-    [SerializeField] private float changeColorTimer = 3.0f;
+    [SerializeField] private float changeColorTime = 3.0f;
     [SerializeField] private float invulnerabilityTime = 5.0f;
     [SerializeField] private int maxHealth = 3;
 
+    private ColorEntity _colorEntity;
     private float _currentHealth;
     private float _invulnerabilityTimer = 0.0f;
+    private float _changeColorTimer = 0.0f;
     private bool _invulnerable;
     protected bool _attacking;
 
@@ -56,6 +59,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private void Awake()
     {
         blackboard = GetComponent<BlackBoardEnemy>();
+        _colorEntity = GetComponent<ColorEntity>();
     }
 
     private void Start()
@@ -150,6 +154,12 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 break;
         }
 
+        _changeColorTimer += Time.deltaTime;
+        if (_changeColorTimer >= changeColorTime)
+        {
+            _colorEntity.colorType = ColorEntity.GetNextColor(_colorEntity.colorType);
+        }
+        
         if (_invulnerable)
             _invulnerabilityTimer += Time.deltaTime;
         
