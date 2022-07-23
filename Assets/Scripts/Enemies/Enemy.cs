@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour, IHit
 
     public void Attacked()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Death", GetComponent<Transform>().position);
         Destroy(gameObject);
     }
 
     public void BeingHit()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
         blackboard.attacking = true;
         GetDir();
     }
