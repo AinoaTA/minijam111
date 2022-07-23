@@ -178,6 +178,7 @@ MonoBehaviour:
   - Ambience
   - Environment
   - Music
+  - NPCs
   - Player
   - UI
   BanksToLoad: []
