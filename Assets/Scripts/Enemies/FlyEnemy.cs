@@ -10,10 +10,12 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     public void Attacked()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Death", GetComponent<Transform>().position);
         Destroy(gameObject);
     }
     public void BeingHit()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
         blackboard.attacking = true;
         GetDir();
     }
@@ -60,6 +62,7 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     private void GetDir()
     {
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Flying", GetComponent<Transform>().position);
         dir = (blackboard.player.transform.position - transform.position).normalized;
 
         Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
@@ -71,6 +74,7 @@ public class FlyEnemy : MonoBehaviour, IHit
     }
     public void ThrowProjectile()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Shot", GetComponent<Transform>().position);
         EnemyProjectile projectile = Instantiate(prefabProyectile, transform.GetChild(0).transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
         Vector3 dir = (blackboard.player.transform.position - transform.GetChild(0).transform.position);
         Vector3 correctedDir = dir.normalized + new Vector3(0, 0.1f, 0);

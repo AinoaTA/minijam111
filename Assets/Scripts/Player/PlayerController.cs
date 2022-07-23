@@ -160,6 +160,7 @@ namespace Player
 
             if (Input.GetKey(JumpKeyCode) && _onGround)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Jump", GetComponent<Transform>().position);
                 _verticalSpeed = 5.0f;
             }
 
