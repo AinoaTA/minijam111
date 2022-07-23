@@ -1091,10 +1091,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3329119531955133859, guid: 8ff5747bd347eb44f821abd246dd5589, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3329119531955133865, guid: 8ff5747bd347eb44f821abd246dd5589, type: 3}
       propertyPath: m_RootOrder
       value: 9
