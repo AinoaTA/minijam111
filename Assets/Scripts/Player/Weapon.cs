@@ -30,23 +30,23 @@ namespace Player
             _mainCamera = Camera.main;
             _weaponRenderer = weaponModel.GetComponent<Renderer>();
             hud.UpdateColor(projectileColor);
-            ApplyMaterialToProjectile();
+           //ApplyMaterialToProjectile();
             
         }
 
         private void ApplyMaterialToProjectile()
         {
             var material = GetMaterial();
-            _weaponRenderer.material = material;
+            //_weaponRenderer.material = material;
         }
 
         public void ChangeWeaponColor()
         {
             projectileColor = GetNextColor(projectileColor);
             hud.UpdateColor(projectileColor);
-            ApplyMaterialToProjectile();
+            // ApplyMaterialToProjectile();
         }
-        
+
         public void InstantiateProjectile()
         {
             Vector3 firePosition;
