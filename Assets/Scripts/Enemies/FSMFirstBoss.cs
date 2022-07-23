@@ -180,6 +180,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Attack()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Melee", GetComponent<Transform>().position);
         var random = Random.Range(0, 2);
         switch (random)
         {
@@ -270,6 +271,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Damage()
     {
+        
         if (_invulnerable) return;
         
         _currentHealth--;
@@ -288,7 +290,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     public void Attacked()
     {
         Damage();
-        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);
@@ -296,12 +298,14 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Die()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
         animator.SetTrigger(Death);
         Destroy(gameObject);
     }
 
     public void BeingHit()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);
