@@ -27,13 +27,14 @@ namespace Others
             damage.Play("Damage");
             StartCoroutine(Cooldown());
             currHealth--;
-            //hudController.UpdateHearts(currHealth);
+            //hudController.UpdateHearts(currHealth,true);
             
             //CALL HUDCONTROLLER
             
             if (currHealth <= 0)
                 Death();
         }
+
         IEnumerator Cooldown()
         {
             cooldown = true;
@@ -45,7 +46,7 @@ namespace Others
             if (currHealth < maxHealth)
             {
                 currHealth++;
-                hudController.UpdateHearts(currHealth);
+                hudController.UpdateHearts(currHealth,false);
             }
         }
 

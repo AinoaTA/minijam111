@@ -30,7 +30,6 @@ namespace Colors
             if (collision.collider.TryGetComponent(out ColorEntity coloredEntity))
             {
                 RunInteraction(collision.gameObject);
-               
             }
         }
     }

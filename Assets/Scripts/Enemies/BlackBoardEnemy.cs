@@ -7,8 +7,6 @@ using UnityEngine.Serialization;
 
 public class BlackBoardEnemy : MonoBehaviour
 {
-    [SerializeField]bool normalEnemy;
-    public NavMeshAgent navMeshAgent;
     public float minDetectDistance;
     public float minAttackDistance;
     public float minFollowingDistance;
@@ -19,37 +17,27 @@ public class BlackBoardEnemy : MonoBehaviour
     public float speed;
     public LayerMask layerMask;
     public float raycastDistance;
-    public float damage;
+    public float recoveryAttackTime=1;
     [Range(0,360)]
     public float angle;
-    public GameObject parentInterestingPoints;
-    public GameObject player;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector]public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacked, attacking;
-    [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
 
-    private void Start()
+    private void Awake()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<HealthSystem>();
-        if (normalEnemy)
-            return;
-        for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)
-        {
-            allInterestingPoints.Add(parentInterestingPoints.transform.GetChild(a));
-        }
     }
-
-    public Vector3 GetInterestingPoint() => allInterestingPoints[Random.Range(0, allInterestingPoints.Count)].position;
-
     public IEnumerator AttackRecovery()
     {
         attacked = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(recoveryAttackTime);
         attacked = false;
     }
-
     public Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)
     {
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
