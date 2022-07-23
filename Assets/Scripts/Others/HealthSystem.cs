@@ -22,7 +22,8 @@ namespace Others
         {
             if (cooldown)
                 return;
-            
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Damage", GetComponent<Transform>().position);
             damage.Play("Damage");
             StartCoroutine(Cooldown());
             currHealth--;
