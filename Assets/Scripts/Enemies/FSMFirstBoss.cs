@@ -271,9 +271,14 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Damage()
     {
+
+        if (_invulnerable)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
+            return;
+        }
         
-        if (_invulnerable) return;
-        
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
         _currentHealth--;
         if(_currentHealth <= 0)
             Die();
@@ -290,7 +295,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     public void Attacked()
     {
         Damage();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
+        
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);
