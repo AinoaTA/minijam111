@@ -17,11 +17,52 @@ namespace UI_and_Menus
         [SerializeField] private Color selected;
         ColorTypes previousColor=(ColorTypes)1;
 
+        [Header("Menus Parts")]
+        [SerializeField] private CanvasGroup pauseMenu;
+
+        [HideInInspector] public bool isPause;
+        private void Start()
+        {
+            GameManager.gameManager.hudController = this;
+        }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) 
+            {
+                isPause = true;
+                Unlock();
+                ShowCanvasGroup(pauseMenu);
+            }
+        }
+
+        public void ShowCanvasGroup(CanvasGroup canvas) 
+        {
+            canvas.alpha = 1;
+            canvas.blocksRaycasts = true;
+            canvas.interactable = true;
+        }
+
+        public void HideCanvasGroup(CanvasGroup canvas)
+        {
+            canvas.alpha = 0;
+            canvas.blocksRaycasts = false;
+            canvas.interactable =false;
+        }
         public void UpdateHearts(int health, bool isDamaged)
         {
             hearts[health].gameObject.SetActive(!isDamaged);
         }
+        public void Lock()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
+        public void Unlock() 
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
         public void UpdateColor(ColorTypes color)
         {
             selectedColor.sprite = colorsSprites[(int)color];

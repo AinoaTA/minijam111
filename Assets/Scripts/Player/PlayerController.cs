@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -63,9 +62,10 @@ namespace Player
 
         private void Update()
         {
-
+            if (GameManager.gameManager.hudController.isPause)
+                return;
         #if UNITY_EDITOR
-            if (Input.GetKeyDown(DebugLockAngleKeyCode))
+                if (Input.GetKeyDown(DebugLockAngleKeyCode))
                 _angleLocked = !_angleLocked;
             if (Input.GetKeyDown(DebugLockKeyCode))
             {
