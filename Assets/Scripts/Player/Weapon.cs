@@ -32,7 +32,6 @@ namespace Player
             _weaponRenderer = weaponModel.GetComponent<Renderer>();
             hud.UpdateColor(projectileColor);
             //ApplyMaterialToProjectile();
-
         }
 
         private void ApplyMaterialToProjectile()
@@ -51,13 +50,9 @@ namespace Player
         public void SetVelocityIdle(float speed)
         {
             if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                print("idleee");
                 weaponAnimator.speed = speed;
-            }
             else
                 weaponAnimator.speed = 1;
-
         }
         public void InstantiateProjectile()
         {
