@@ -6,7 +6,6 @@ namespace Others
 {
     public class HealthSystem : MonoBehaviour
     {
-        [SerializeField] private HUDController hudController; 
         [SerializeField] private int maxHealth = 3;
         private int currHealth;
         [SerializeField] private float cooldownTimer = 2f;
@@ -27,7 +26,7 @@ namespace Others
             damage.Play("Damage");
             StartCoroutine(Cooldown());
             currHealth--;
-            hudController.UpdateHearts(currHealth,true);
+            GameManager.gameManager.hudController.UpdateHearts(currHealth,true);
             
             if (currHealth <= 0)
                 Death();
@@ -44,7 +43,7 @@ namespace Others
             if (currHealth < maxHealth)
             {
                 currHealth++;
-                hudController.UpdateHearts(currHealth,false);
+                GameManager.gameManager.hudController.UpdateHearts(currHealth,false);
             }
         }
 

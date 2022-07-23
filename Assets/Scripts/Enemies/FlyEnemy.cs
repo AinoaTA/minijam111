@@ -46,7 +46,7 @@ public class FlyEnemy : MonoBehaviour, IHit
                 {
                     if (blackboard.attacking)
                     {
-                        GetDir();
+                        blackboard.attacking = false;
                     }
                     else
                     {

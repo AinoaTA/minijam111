@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour, IHit
 
     public void BeingHit()
     {
-        throw new System.NotImplementedException();
+        blackboard.attacking = true;
+        GetDir();
     }
 
     private void Awake()
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour, IHit
                 {
                     if (blackboard.attacking)
                     {
-                        GetDir();
+                        blackboard.attacking = false;
                     }
                     else
                     {

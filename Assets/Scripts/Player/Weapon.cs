@@ -8,7 +8,6 @@ namespace Player
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private ColorTypes projectileColor = 0;
-        [SerializeField] private HUDController hud;
         [SerializeField] private bool shootFromFirePoint;
         [SerializeField] private GameObject weaponModel;
         [SerializeField] private Animator weaponAnimator;
@@ -30,7 +29,7 @@ namespace Player
             weaponAnimator.Play("Idle");
             _mainCamera = Camera.main;
             //_weaponRenderer = weaponModel.GetComponent<Renderer>();
-            hud.UpdateColor(projectileColor);
+            GameManager.gameManager.hudController.UpdateColor(projectileColor);
             //ApplyMaterialToProjectile();
         }
 
@@ -43,7 +42,7 @@ namespace Player
         public void ChangeWeaponColor()
         {
             projectileColor = ColorEntity.GetNextColor(projectileColor);
-            hud.UpdateColor(projectileColor);
+            GameManager.gameManager.hudController.UpdateColor(projectileColor);
             // ApplyMaterialToProjectile();
         }
 
