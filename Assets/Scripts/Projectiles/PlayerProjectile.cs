@@ -21,7 +21,7 @@ namespace Projectiles
             if (Camera.main != null)
                 GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * projectileSpeed;
 
-            _color = GetComponent<ColorEntity>().ColorType;
+            _color = GetComponent<ColorEntity>().colorType;
             GetComponent<Renderer>().material = GetMaterial();
 
             DestroyAfterSeconds(secondsToDestroy);

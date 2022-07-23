@@ -11,11 +11,11 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     [SerializeField] private float changeColorTimer = 3.0f;
     [SerializeField] private float invulnerabilityTime = 5.0f;
-    [SerializeField] private int maxHealth;
+    [SerializeField] private int maxHealth = 3;
 
-    private float currentHealth;
-    private float invulnerabiltyTimer = 0.0f;
-    private bool invulnerable; 
+    private float _currentHealth;
+    private float _invulnerabilityTimer = 0.0f;
+    private bool _invulnerable; 
     
     private void OnDrawGizmos()
     {
@@ -53,14 +53,15 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         state = StateMachine.IDLE;
         ChangeState(StateMachine.IDLE);
-        currentHealth = maxHealth;
-        invulnerable = false;
+        _currentHealth = maxHealth;
+        _invulnerable = false;
     }
 
     private void Update()
     {
         if (!blackboard.enabledGame)
             return;
+        
         switch (state)
         {
             case StateMachine.IDLE:
@@ -117,8 +118,8 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                     Vector3 direction = blackboard.player.transform.position - transform.position;
                     direction.y = 0;
                     direction.Normalize();
-                    Vector3 desplacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
-                    blackboard.navMeshAgent.SetDestination(desplacement);
+                    Vector3 displacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
+                    blackboard.navMeshAgent.SetDestination(displacement);
                 }
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
@@ -131,13 +132,13 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 break;
         }
 
-        if (invulnerable)
-            invulnerabiltyTimer += Time.deltaTime;
+        if (_invulnerable)
+            _invulnerabilityTimer += Time.deltaTime;
         
-        if (invulnerabiltyTimer >= invulnerabilityTime)
+        if (_invulnerabilityTimer >= invulnerabilityTime)
         {
-            invulnerable = false;
-            invulnerabiltyTimer = 0f;
+            _invulnerable = false;
+            _invulnerabilityTimer = 0f;
         }
         
         Looking();
@@ -183,17 +184,10 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 Vector3 direction = blackboard.player.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                Vector3 desplacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
-                blackboard.navMeshAgent.SetDestination(desplacement);
+                Vector3 displacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
+                blackboard.navMeshAgent.SetDestination(displacement);
 
-                if (!invulnerable)
-                {
-                    currentHealth--;
-                    if(currentHealth <= 0)
-                        Destroy(gameObject);
-
-                    invulnerable = true;
-                }
+                Damage();
                 break;
             case StateMachine.ATTACK:
 
@@ -220,6 +214,17 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         state = newState;
     }
 
+    private void Damage()
+    {
+        if (_invulnerable) return;
+        
+        _currentHealth--;
+        if(_currentHealth <= 0)
+            Die();
+
+        _invulnerable = true;
+    }
+
     IEnumerator WaitForSomething(float s, Action action)
     {
         yield return new WaitForSeconds(s);
@@ -227,8 +232,15 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     }
     public void Attacked()
     {
+        Damage();
+        
         if (blackboard.attacking)
             return;
         ChangeState(StateMachine.HIT);
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
