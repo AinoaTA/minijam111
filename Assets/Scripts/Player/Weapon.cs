@@ -60,7 +60,7 @@ namespace Player
             
             var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
             
-            projectile.GetComponent<ColorEntity>().ColorType = projectileColor;
+            projectile.GetComponent<ColorEntity>().colorType = projectileColor;
         }
 
         private ColorTypes GetNextColor(ColorTypes color)
