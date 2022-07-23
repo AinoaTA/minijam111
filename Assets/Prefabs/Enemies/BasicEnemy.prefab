@@ -138,7 +138,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.1
-  m_BaseOffset: 1
+  m_BaseOffset: 1.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &815536148657197127
@@ -170,7 +170,7 @@ MonoBehaviour:
   angle: 40
   parentInterestingPoints: {fileID: 0}
   player: {fileID: 0}
-  playerHeal: {fileID: 0}
+  playerHealth: {fileID: 0}
   enabledGame: 1
   looking: 0
   attacked: 0
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f735fd6b775b8f742ba23f7f210bbbff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.08
+      value: -1.123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f735fd6b775b8f742ba23f7f210bbbff, type: 3}
       propertyPath: m_LocalPosition.z

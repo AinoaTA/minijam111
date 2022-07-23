@@ -210,7 +210,7 @@ MonoBehaviour:
   angle: 120
   parentInterestingPoints: {fileID: 1459481219}
   player: {fileID: 2003788427}
-  playerHeal: {fileID: 0}
+  playerHealth: {fileID: 0}
   enabledGame: 1
   looking: 0
   attacked: 0
@@ -2097,15 +2097,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847f16e06c2a48d4780b6b629b099385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hudController: {fileID: 0}
   maxHealth: 3
   currHealth: 0
   cooldownTimer: 2
-  hearts:
-  - {fileID: 2009877003}
-  - {fileID: 1138010118}
-  - {fileID: 1750187006}
-  broken: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  heal: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   damage: {fileID: 390991092}
 --- !u!4 &2003788432
 Transform:
@@ -2429,10 +2424,6 @@ PrefabInstance:
       propertyPath: parentInterestingPoints
       value: 
       objectReference: {fileID: 1459481219}
-    - target: {fileID: 3329119531955133870, guid: 8ff5747bd347eb44f821abd246dd5589, type: 3}
-      propertyPath: m_AgentTypeID
-      value: -334000983
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff5747bd347eb44f821abd246dd5589, type: 3}
 --- !u!1001 &6984496013812130954
