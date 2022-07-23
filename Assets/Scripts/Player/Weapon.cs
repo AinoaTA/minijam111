@@ -12,19 +12,20 @@ namespace Player
         
         [Header("Projectiles Data")]
         [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private Transform firePoint;
+        
+        [Header("Materials")]
         [SerializeField] private Material greenProjectileMaterial;
         [SerializeField] private Material blueProjectileMaterial;
         [SerializeField] private Material redProjectileMaterial;
-        [SerializeField] private Transform firePoint;
+
         
-        private Renderer _projectileRenderer;
         private Renderer _weaponRenderer;
         private Camera _mainCamera;
 
         private void Start()
         {
             _mainCamera = Camera.main;
-            _projectileRenderer = projectilePrefab.GetComponent<Renderer>();
             _weaponRenderer = weaponModel.GetComponent<Renderer>();
 
             ApplyMaterialToProjectile();
@@ -33,8 +34,7 @@ namespace Player
 
         private void ApplyMaterialToProjectile()
         {
-            var material = GetMaterial(); 
-            _projectileRenderer.material = material;
+            var material = GetMaterial();
             _weaponRenderer.material = material;
         }
 
@@ -63,19 +63,6 @@ namespace Player
             projectile.GetComponent<ColorEntity>().ColorType = projectileColor;
         }
 
-        private Material GetMaterial()
-        {
-            var material = projectileColor switch
-            {
-                ColorTypes.Green => greenProjectileMaterial,
-                ColorTypes.Blue => blueProjectileMaterial,
-                ColorTypes.Red => redProjectileMaterial,
-                _ => throw new ArgumentOutOfRangeException()
-            };
-
-            return material;
-        }
-
         private ColorTypes GetNextColor(ColorTypes color)
         {
             /*
@@ -91,6 +78,19 @@ namespace Player
             var colors = (ColorTypes[])Enum.GetValues(typeof(ColorTypes));
             var i = Array.IndexOf(colors, color) + 1;
             return (colors.Length==i) ? colors[0] : colors[i];
+        }
+        
+        private Material GetMaterial()
+        {
+            var material = projectileColor switch
+            {
+                ColorTypes.Green => greenProjectileMaterial,
+                ColorTypes.Blue => blueProjectileMaterial,
+                ColorTypes.Red => redProjectileMaterial,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            return material;
         }
     }
 }

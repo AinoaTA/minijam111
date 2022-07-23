@@ -128,6 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 30
   secondsToDestroy: 10
+  greenProjectileMaterial: {fileID: 2100000, guid: 4580e4e2af01dd34591fc78f1665c9b5, type: 2}
+  blueProjectileMaterial: {fileID: 2100000, guid: fadd1871f99bb1e4e8fdbf591cedb5cf, type: 2}
+  redProjectileMaterial: {fileID: 2100000, guid: 334623f3b64e3d043af4e0c33e4b4395, type: 2}
 --- !u!114 &6549123893126991832
 MonoBehaviour:
   m_ObjectHideFlags: 0
