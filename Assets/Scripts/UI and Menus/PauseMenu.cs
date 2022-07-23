@@ -14,6 +14,7 @@ namespace UI_and_Menus
         public void OnResumePressed()
         {
             GameManager.gameManager.hudController.HideCanvasGroup(canvas);
+            GameManager.gameManager.hudController.Lock();
             GameManager.gameManager.hudController.isPause = false;
             Time.timeScale = 1;
         }

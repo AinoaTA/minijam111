@@ -30,6 +30,7 @@ namespace UI_and_Menus
             if (Input.GetKeyDown(KeyCode.Escape)) 
             {
                 isPause = true;
+                Unlock();
                 ShowCanvasGroup(pauseMenu);
             }
         }
@@ -51,7 +52,17 @@ namespace UI_and_Menus
         {
             hearts[health].gameObject.SetActive(!isDamaged);
         }
+        public void Lock()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
+        public void Unlock() 
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
         public void UpdateColor(ColorTypes color)
         {
             selectedColor.sprite = colorsSprites[(int)color];
