@@ -1,7 +1,11 @@
 {
     "name": "NavMeshComponentsTestsPlaymode",
     "references": [
-        "NavMeshComponents"
+        "NavMeshComponents",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "UnityEditor.UI",
+        "UnityEngine.UI"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
