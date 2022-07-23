@@ -158,6 +158,7 @@ MonoBehaviour:
   minDetectDistance: 6
   minAttackDistance: 2
   minFollowingDistance: 20
+  minWanderDistance: 7
   minApproximation: 7
   timer: 2
   waitTimer: 2
@@ -201,7 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3456eb445e28fe54fb3be0e34331a69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   prefabProyectile: {fileID: 0}
 --- !u!135 &3329119531955133858
 SphereCollider:

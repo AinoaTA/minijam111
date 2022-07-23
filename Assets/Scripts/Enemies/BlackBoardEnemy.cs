@@ -12,6 +12,7 @@ public class BlackBoardEnemy : MonoBehaviour
     public float minDetectDistance;
     public float minAttackDistance;
     public float minFollowingDistance;
+    public float minWanderDistance;
     public float minApproximation;
     public float timer;
     public float waitTimer;

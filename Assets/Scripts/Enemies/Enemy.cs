@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, IHit
                         blackboard.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
                         blackboard.navMeshAgent.remainingDistance == 0)
             {
-                Vector3 dest =blackboard.RandomNavSphere(transform.position, blackboard.minDetectDistance, 1);
+                Vector3 dest =blackboard.RandomNavSphere(transform.position, blackboard.minWanderDistance, 1);
                 blackboard.navMeshAgent.SetDestination(dest);
             }
         }

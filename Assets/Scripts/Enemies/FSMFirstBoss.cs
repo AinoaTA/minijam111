@@ -152,8 +152,13 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (newState)
         {
             case StateMachine.IDLE:
-
-                blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
+                if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
+                       blackboard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
+                       blackboard.navMeshAgent.remainingDistance == 0)
+                {
+                    blackboard.navMeshAgent.SetDestination(blackboard.RandomNavSphere(transform.position, blackboard.minWanderDistance, 1));
+                    // blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
+                }
                 break;
             case StateMachine.WALK:
                 break;
