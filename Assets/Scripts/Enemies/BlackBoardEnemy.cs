@@ -20,6 +20,7 @@ public class BlackBoardEnemy : MonoBehaviour
     public LayerMask layerMask;
     public float raycastDistance;
     public float damage;
+    public float recoveryAttackTime=1;
     [Range(0,360)]
     public float angle;
     public GameObject parentInterestingPoints;
@@ -46,7 +47,7 @@ public class BlackBoardEnemy : MonoBehaviour
     public IEnumerator AttackRecovery()
     {
         attacked = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(recoveryAttackTime);
         attacked = false;
     }
 

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3456eb445e28fe54fb3be0e34331a69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabProyectile: {fileID: 0}
+  prefabProyectile: {fileID: 7084570971485763851, guid: dfe1739fec8b30842b956acc2a4814ab, type: 3}
 --- !u!135 &3329119531955133858
 SphereCollider:
   m_ObjectHideFlags: 0
