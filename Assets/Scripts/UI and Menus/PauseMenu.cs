@@ -16,9 +16,12 @@ namespace UI_and_Menus
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameManager.hudController.isGameOver)
             {
-                GameManager.gameManager.hudController.isPause = true;
-                GameManager.gameManager.hudController.Unlock();
-                GameManager.gameManager.hudController.ShowCanvasGroup(canvas);
+                GameManager.gameManager.hudController.isPause = !GameManager.gameManager.hudController.isPause;
+                GameManager.gameManager.hudController.UnlockMouse(GameManager.gameManager.hudController.isPause);
+                if(GameManager.gameManager.hudController.isPause)
+                    GameManager.gameManager.hudController.ShowCanvasGroup(canvas);
+                else
+                    GameManager.gameManager.hudController.HideCanvasGroup(canvas);
             }
         }
         public void OnResumePressed()

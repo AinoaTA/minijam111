@@ -50,10 +50,19 @@ namespace UI_and_Menus
             Cursor.visible = false;
         }
 
-        public void Unlock() 
+        public void UnlockMouse(bool state) 
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            if (state)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true; 
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false; 
+            }
+            
         }
         public void UpdateColor(ColorTypes color)
         {
@@ -79,7 +88,7 @@ namespace UI_and_Menus
         public void GameOver()
         {
             ShowCanvasGroup(gameOver);
-            Unlock();
+            UnlockMouse(true);
             Time.timeScale = 0;
             isGameOver = true;
         }
