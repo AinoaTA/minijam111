@@ -21,13 +21,16 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private float _invulnerabilityTimer = 0.0f;
     private float _changeColorTimer = 0.0f;
     private bool _invulnerable;
-    protected bool _attacking;
 
     [SerializeField] private Animator animator;
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int Punch = Animator.StringToHash("OnPunchTrigger");
     private static readonly int Kick = Animator.StringToHash("OnKickTrigger");
     private static readonly int Death = Animator.StringToHash("OnDeathTrigger");
+    private static readonly int Invulnerable = Animator.StringToHash("Invulnerable");
+    
+    public GameObject prefabProyectile;
+    
 
     private void OnDrawGizmos()
     {
@@ -45,7 +48,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.up);
 
             Vector3 upRayDirection = upRayRotation * -transform.forward * rayRange;
-            Vector3 downRayDirection = downRayRotation * -transform.forward * rayRange;
+            Vector3 downRayDirection = downRayRotation * - transform.forward * rayRange;
 
             if (!blackboard.looking)
                 Gizmos.color = Color.red;
@@ -68,7 +71,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         ChangeState(StateMachine.IDLE);
         _currentHealth = maxHealth;
         _invulnerable = false;
-        _attacking = false;
     }
 
     private void Update()
@@ -162,6 +164,8 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         
         if (_invulnerable)
             _invulnerabilityTimer += Time.deltaTime;
+        else
+            animator.SetBool(Invulnerable, false);
         
         if (_invulnerabilityTimer >= invulnerabilityTime)
         {
@@ -274,6 +278,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             Die();
 
         _invulnerable = true;
+        animator.SetBool(Invulnerable, true);
     }
 
     IEnumerator WaitForSomething(float s, Action action)
