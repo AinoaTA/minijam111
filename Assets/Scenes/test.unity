@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972736, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: changeColorTime
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1029,6 +1033,7 @@ MonoBehaviour:
   hud: {fileID: 0}
   shootFromFirePoint: 1
   weaponModel: {fileID: 1153001533}
+  weaponAnimator: {fileID: 0}
   projectilePrefab: {fileID: 7084570971485763851, guid: 309c4eb260d452e489c76f5137312b36, type: 3}
   firePoint: {fileID: 1267174820}
   greenProjectileMaterial: {fileID: 2100000, guid: 4580e4e2af01dd34591fc78f1665c9b5, type: 2}
