@@ -27,9 +27,7 @@ namespace Others
             damage.Play("Damage");
             StartCoroutine(Cooldown());
             currHealth--;
-            //hudController.UpdateHearts(currHealth,true);
-            
-            //CALL HUDCONTROLLER
+            hudController.UpdateHearts(currHealth,true);
             
             if (currHealth <= 0)
                 Death();
