@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  changeColorTimer: 3
+  changeColorTime: 3
   invulnerabilityTime: 5
   maxHealth: 3
   animator: {fileID: 5728106422946770548}
@@ -202,8 +202,14 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   enabledGame: 1
   looking: 0
-  attacked: 0
   attacking: 0
+  hit: 0
+  isBoss: 0
+  allEyesMaterial:
+  - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
+  - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
+  - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
+  eyeMaterial: {fileID: 5165446464035101196}
 --- !u!114 &9149394449136972737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,5 +396,10 @@ Transform:
 --- !u!95 &5728106422946770548 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3568961656175985859, guid: 90ee9b0a774450742b5301c773d38e7a, type: 3}
+  m_PrefabInstance: {fileID: 9149394449799588535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5165446464035101196 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4131621607428862139, guid: 90ee9b0a774450742b5301c773d38e7a, type: 3}
   m_PrefabInstance: {fileID: 9149394449799588535}
   m_PrefabAsset: {fileID: 0}

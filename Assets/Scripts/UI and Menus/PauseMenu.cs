@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI_and_Menus
 {
@@ -21,7 +22,7 @@ namespace UI_and_Menus
 
         public void OnRestartGame()
         {
-            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
         }
 
         public void OnQuitPressed()

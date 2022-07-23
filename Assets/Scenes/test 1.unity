@@ -660,11 +660,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
---- !u!224 &931017728 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1126160844041865655, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-  m_PrefabInstance: {fileID: 1126160843729272247}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &931017729 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1126160844041865654, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
@@ -736,46 +731,6 @@ MonoBehaviour:
   m_VoxelSize: 0.28333333
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: c52328120ceeb6242b3968485ade3762, type: 2}
---- !u!137 &1550766048 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5165446464035101196, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-  m_PrefabInstance: {fileID: 9149394449127940586}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1578018486
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1578018487}
-  m_Layer: 5
-  m_Name: GameOver
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1578018487
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578018486}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 931017728}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1755444145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,26 +1224,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4633435357077230311, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633435357077230311, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633435357077230311, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633435357077230311, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnResumePressed
-      objectReference: {fileID: 0}
-    - target: {fileID: 4633435357077230311, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UI_and_Menus.PauseMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 6517708665169298135, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1296,26 +1231,6 @@ PrefabInstance:
     - target: {fileID: 6859781797138066651, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139272384829207470, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139272384829207470, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139272384829207470, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139272384829207470, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnQuitPressed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139272384829207470, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UI_and_Menus.PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7280508839851768018, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1513,29 +1428,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2003788427}
     - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-      propertyPath: eyeMaterial
-      value: 
-      objectReference: {fileID: 1550766048}
-    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: parentInterestingPoints
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-      propertyPath: allEyesMaterial.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-      propertyPath: allEyesMaterial.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
-    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-      propertyPath: allEyesMaterial.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
-    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
-      propertyPath: allEyesMaterial.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
     - target: {fileID: 9149394449136972748, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_Name
       value: Boss1

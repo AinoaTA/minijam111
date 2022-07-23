@@ -19,6 +19,7 @@ namespace UI_and_Menus
 
         [Header("Menus Parts")]
         [SerializeField] private CanvasGroup pauseMenu;
+        [SerializeField] private CanvasGroup GameOver;
 
         [HideInInspector] public bool isPause;
         private void Start()
