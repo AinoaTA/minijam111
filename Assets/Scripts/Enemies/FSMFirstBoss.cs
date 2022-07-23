@@ -20,7 +20,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private float _currentHealth;
     private float _invulnerabilityTimer = 0.0f;
     private float _changeColorTimer = 0.0f;
-    private bool _invulnerable;
+    public bool _invulnerable;
 
     [SerializeField] private Animator animator;
     private static readonly int Idle = Animator.StringToHash("Idle");
@@ -29,7 +29,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private static readonly int Death = Animator.StringToHash("OnDeathTrigger");
     private static readonly int Invulnerable = Animator.StringToHash("Invulnerable");
     
-    public GameObject prefabProyectile;
+    [SerializeField] private GameObject invulnerableVFX;
     
 
     private void OnDrawGizmos()
@@ -71,6 +71,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         ChangeState(StateMachine.IDLE);
         _currentHealth = maxHealth;
         _invulnerable = false;
+        invulnerableVFX.SetActive(false);
     }
 
     private void Update()
@@ -172,6 +173,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         if (_invulnerabilityTimer >= invulnerabilityTime)
         {
             _invulnerable = false;
+            invulnerableVFX.SetActive(false);
             _invulnerabilityTimer = 0f;
         }
         
@@ -180,6 +182,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Attack()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Melee", GetComponent<Transform>().position);
         var random = Random.Range(0, 2);
         switch (random)
         {
@@ -239,8 +242,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 direction.Normalize();
                 Vector3 displacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
                 blackboard.navMeshAgent.SetDestination(displacement);
-
-                Damage();
+                
                 break;
             case StateMachine.ATTACK:
 
@@ -270,13 +272,20 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Damage()
     {
-        if (_invulnerable) return;
+
+        if (_invulnerable)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
+            return;
+        }
         
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
         _currentHealth--;
         if(_currentHealth <= 0)
             Die();
 
         _invulnerable = true;
+        invulnerableVFX.SetActive(true);
         animator.SetBool(Invulnerable, true);
     }
 
@@ -296,12 +305,14 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Die()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
         animator.SetTrigger(Death);
         Destroy(gameObject);
     }
 
     public void BeingHit()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);

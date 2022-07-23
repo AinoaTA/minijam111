@@ -14,7 +14,18 @@ namespace Colors
             
             if ( colorType == otherEntityColor)
             {
-                Destroy(gameObject);
+                if (otherEntity.TryGetComponent(out FSMFirstBoss boss))
+                {
+                    if (!boss._invulnerable)
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+
                 if (otherEntity.CompareTag("Enemy"))
                 {
                     otherEntity.GetComponent<IHit>().Attacked();
