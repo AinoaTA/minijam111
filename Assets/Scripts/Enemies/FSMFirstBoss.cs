@@ -60,7 +60,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             case StateMachine.WALK:
                 if (!blackboard.navMeshAgent.hasPath)
                 {
-                    blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
+                    blackboard.navMeshAgent.SetDestination(blackboard.RandomNavSphere(transform.position,blackboard.minDetectDistance,1));
                 }
                 else if (blackboard.looking)
                 {
@@ -157,7 +157,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                        blackboard.navMeshAgent.remainingDistance == 0)
                 {
                     blackboard.navMeshAgent.SetDestination(blackboard.RandomNavSphere(transform.position, blackboard.minWanderDistance, 1));
-                    // blackboard.navMeshAgent.SetDestination(blackboard.GetInterestingPoint());
                 }
                 break;
             case StateMachine.WALK:
@@ -191,8 +190,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             default:
                 break;
         }
-
-
         state = newState;
     }
 
@@ -200,7 +197,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         yield return new WaitForSeconds(s);
         action?.Invoke();
-
     }
     public void Attacked()
     {
