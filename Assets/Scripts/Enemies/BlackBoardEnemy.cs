@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Others;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,11 +25,21 @@ public class BlackBoardEnemy : MonoBehaviour
     [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacked, attacking;
 
+    [HideInInspector] public bool isBoss;
+    [SerializeField] private Material greenEyeMaterial;
+    [SerializeField] private Material blueEyeMaterial;
+    [SerializeField] private Material redEyeMaterial;
+    [SerializeField] private Material eyesMaterial;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<HealthSystem>();
+    }
+
+    private void Start()
+    {
+        
     }
     public IEnumerator AttackRecovery()
     {
