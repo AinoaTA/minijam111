@@ -49,7 +49,7 @@ namespace Others
 
         private void Death()
         {
-            Time.timeScale = 0;
+            GameManager.gameManager.hudController.GameOver();
         }
     }
 }

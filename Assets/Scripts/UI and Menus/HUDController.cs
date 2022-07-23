@@ -19,10 +19,10 @@ namespace UI_and_Menus
 
         [Header("Menus Parts")]
         [SerializeField] private CanvasGroup pauseMenu;
-        [SerializeField] private CanvasGroup GameOver;
+        [SerializeField] private CanvasGroup gameOver;
 
         [HideInInspector] public bool isPause;
-        private void Start()
+        private void Awake()
         {
             GameManager.gameManager.hudController = this;
         }
@@ -83,6 +83,14 @@ namespace UI_and_Menus
 
                     break;
             }
+            
+        }
+        public void GameOver()
+        {
+            ShowCanvasGroup(gameOver);
+            Unlock();
+            Time.timeScale = 0;
+            isPause = true;
         }
     }
 }

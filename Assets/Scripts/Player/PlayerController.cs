@@ -49,7 +49,6 @@ namespace Player
             _yaw = transform.rotation.eulerAngles.y;
             _pitch = pitchControllerTransform.localRotation.eulerAngles.x;
 
-            
             _characterController = GetComponent<CharacterController>();
             _weapon = GetComponent<Weapon>();
         }
@@ -139,7 +138,6 @@ namespace Player
             movement *= (Time.deltaTime * speed * speedMultiplier);
 
             //Gravity
-            
             _verticalSpeed += Physics.gravity.y * Time.deltaTime;
             movement.y = _verticalSpeed * Time.deltaTime;
             var collisionFlags = _characterController.Move(movement);
@@ -171,8 +169,6 @@ namespace Player
                 _shootingTimer = 0f;
             } 
                 _weapon.SetVelocityIdle(Mathf.Clamp(_characterController.velocity.magnitude, 0.2f, 1.2f));
-            
-            
         }
     }
 }

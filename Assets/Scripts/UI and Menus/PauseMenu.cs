@@ -22,6 +22,7 @@ namespace UI_and_Menus
 
         public void OnRestartGame()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(1);
         }
 

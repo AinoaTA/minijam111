@@ -11,8 +11,10 @@ namespace Colors
         public void RunInteraction(GameObject otherEntity)
         {
             var otherEntityColor = otherEntity.GetComponent<ColorEntity>().colorType;
+            
             if ( colorType == otherEntityColor)
             {
+                Destroy(gameObject);
                 if (otherEntity.CompareTag("Enemy"))
                 {
                     otherEntity.GetComponent<IHit>().Attacked();
