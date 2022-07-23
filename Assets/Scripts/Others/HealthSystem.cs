@@ -51,5 +51,13 @@ namespace Others
         {
             GameManager.gameManager.hudController.GameOver();
         }
+
+        public void RecoverAllLife()
+        {
+            for (int i = currHealth; i < 3; i++)
+            {
+                GetHealing();
+            }
+        }
     }
 }

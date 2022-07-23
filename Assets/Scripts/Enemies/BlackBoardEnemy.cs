@@ -20,7 +20,7 @@ public class BlackBoardEnemy : MonoBehaviour
     public float recoveryAttackTime=1;
     [Range(0,360)]
     public float angle;
-    [HideInInspector] public NavMeshAgent navMeshAgent;
+   /* [HideInInspector]*/ public NavMeshAgent navMeshAgent;
     [HideInInspector]public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame=true;
