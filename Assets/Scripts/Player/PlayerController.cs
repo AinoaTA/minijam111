@@ -61,7 +61,7 @@ namespace Player
 
         private void Update()
         {
-            if (GameManager.gameManager.hudController.isPause)
+            if (GameManager.gameManager.hudController.isPause || GameManager.gameManager.hudController.isGameOver)
                 return;
         #if UNITY_EDITOR
                 if (Input.GetKeyDown(DebugLockAngleKeyCode))
