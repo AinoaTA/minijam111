@@ -1,5 +1,6 @@
 using System;
 using Colors;
+using UI_and_Menus;
 using UnityEngine;
 
 namespace Player
@@ -7,6 +8,7 @@ namespace Player
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private ColorTypes projectileColor = 0;
+        [SerializeField] private HUDController hud;
         [SerializeField] private bool shootFromFirePoint;
         [SerializeField] private GameObject weaponModel;
         
@@ -27,7 +29,7 @@ namespace Player
         {
             _mainCamera = Camera.main;
             _weaponRenderer = weaponModel.GetComponent<Renderer>();
-
+            hud.UpdateColor(projectileColor);
             ApplyMaterialToProjectile();
             
         }
@@ -41,6 +43,7 @@ namespace Player
         public void ChangeWeaponColor()
         {
             projectileColor = GetNextColor(projectileColor);
+            hud.UpdateColor(projectileColor);
             ApplyMaterialToProjectile();
         }
         
@@ -65,6 +68,7 @@ namespace Player
 
         private ColorTypes GetNextColor(ColorTypes color)
         {
+            
             /*
             var colors = Enum.GetValues(typeof(Color));
             var colorIndex = (int)color + 1;
@@ -77,6 +81,7 @@ namespace Player
             
             var colors = (ColorTypes[])Enum.GetValues(typeof(ColorTypes));
             var i = Array.IndexOf(colors, color) + 1;
+            
             return (colors.Length==i) ? colors[0] : colors[i];
         }
         
