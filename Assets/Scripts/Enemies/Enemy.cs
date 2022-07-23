@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour, IHit
 
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
         {
-            blackboard.playerHeal.TakeDamage();
+            blackboard.playerHealth.TakeDamage();
             StartCoroutine(blackboard.AttackRecovery());
         }
     }

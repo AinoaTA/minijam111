@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Others;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class BlackBoardEnemy : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class BlackBoardEnemy : MonoBehaviour
     public float angle;
     public GameObject parentInterestingPoints;
     public GameObject player;
-    [HideInInspector] public HealSystem playerHeal;
+    [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacked, attacking;
     [SerializeField] private List<Transform> allInterestingPoints = new List<Transform>();
@@ -29,7 +31,7 @@ public class BlackBoardEnemy : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHeal = player.GetComponent<HealSystem>();
+        playerHealth = player.GetComponent<HealthSystem>();
         if (normalEnemy)
             return;
         for (int a = 0; a < parentInterestingPoints.transform.childCount; a++)
