@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  changeColorTimer: 3
+  invulnerabilityTime: 5
+  maxHealth: 3
+  animator: {fileID: 5728106422946770548}
 --- !u!114 &9149394449136972739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2484da01fe286d498688c4644d3f9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalEnemy: 0
-  navMeshAgent: {fileID: 9149394449136972749}
   minDetectDistance: 10
   minAttackDistance: 2
   minFollowingDistance: 20
@@ -193,17 +195,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7745
   raycastDistance: 10
-  damage: 0
   recoveryAttackTime: 1
   angle: 120
-  parentInterestingPoints: {fileID: 0}
+  navMeshAgent: {fileID: 9149394449136972749}
   player: {fileID: 0}
   playerHealth: {fileID: 0}
   enabledGame: 1
   looking: 0
   attacked: 0
   attacking: 0
-  allInterestingPoints: []
 --- !u!114 &9149394449136972737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ecba8c615206d46b470e6aa86a5ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorType: 1
+  colorType: 0
 --- !u!136 &9149394449136972742
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -385,5 +385,10 @@ PrefabInstance:
 --- !u!4 &1846052148062581774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7451015793445297849, guid: 90ee9b0a774450742b5301c773d38e7a, type: 3}
+  m_PrefabInstance: {fileID: 9149394449799588535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5728106422946770548 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3568961656175985859, guid: 90ee9b0a774450742b5301c773d38e7a, type: 3}
   m_PrefabInstance: {fileID: 9149394449799588535}
   m_PrefabAsset: {fileID: 0}

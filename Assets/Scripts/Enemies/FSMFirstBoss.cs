@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using Colors;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class FSMFirstBoss : MonoBehaviour, IHit
 {
@@ -9,14 +12,23 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
 
-    [SerializeField] private float changeColorTimer = 3.0f;
+    [SerializeField] private float changeColorTime = 3.0f;
     [SerializeField] private float invulnerabilityTime = 5.0f;
     [SerializeField] private int maxHealth = 3;
 
+    private ColorEntity _colorEntity;
     private float _currentHealth;
     private float _invulnerabilityTimer = 0.0f;
-    private bool _invulnerable; 
-    
+    private float _changeColorTimer = 0.0f;
+    private bool _invulnerable;
+    protected bool _attacking;
+
+    [SerializeField] private Animator animator;
+    private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Punch = Animator.StringToHash("OnPunchTrigger");
+    private static readonly int Kick = Animator.StringToHash("OnKickTrigger");
+    private static readonly int Death = Animator.StringToHash("OnDeathTrigger");
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -47,6 +59,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private void Awake()
     {
         blackboard = GetComponent<BlackBoardEnemy>();
+        _colorEntity = GetComponent<ColorEntity>();
     }
 
     private void Start()
@@ -55,6 +68,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         ChangeState(StateMachine.IDLE);
         _currentHealth = maxHealth;
         _invulnerable = false;
+        _attacking = false;
     }
 
     private void Update()
@@ -124,14 +138,28 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacked)
                 {
-                    blackboard.playerHealth.TakeDamage();
-                    StartCoroutine(blackboard.AttackRecovery());
+                    animator.SetBool(Idle, true);
+                    Attack();
+                }
+                else if (blackboard.attacked && Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance)
+                {
+                    animator.SetBool(Idle, true);
+                }
+                else
+                {
+                    animator.SetBool(Idle, false);
                 }
                 break;
             default:
                 break;
         }
 
+        _changeColorTimer += Time.deltaTime;
+        if (_changeColorTimer >= changeColorTime)
+        {
+            _colorEntity.colorType = ColorEntity.GetNextColor(_colorEntity.colorType);
+        }
+        
         if (_invulnerable)
             _invulnerabilityTimer += Time.deltaTime;
         
@@ -142,6 +170,27 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         }
         
         Looking();
+    }
+
+    private void Attack()
+    {
+        var random = Random.Range(0, 2);
+        Debug.Log(random);
+        switch (random)
+        {
+            case 0:
+                Debug.Log("Punch");
+                animator.SetTrigger(Punch);
+                break;
+            case 1:
+                Debug.Log("Kick");
+                animator.SetTrigger(Kick);
+                break;
+        }
+
+        blackboard.attacked = true;
+        //blackboard.playerHealth.TakeDamage();
+        StartCoroutine(blackboard.AttackRecovery());
     }
 
     private void Looking()
@@ -171,6 +220,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (newState)
         {
             case StateMachine.IDLE:
+                animator.SetBool(Idle, true);
                 if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
                        blackboard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
                        blackboard.navMeshAgent.remainingDistance == 0)
@@ -199,6 +249,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (state)
         {
             case StateMachine.IDLE:
+                animator.SetBool(Idle, false);
                 break;
             case StateMachine.WALK:
                 break;
@@ -241,6 +292,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Die()
     {
+        animator.SetTrigger(Death);
         Destroy(gameObject);
     }
 }
