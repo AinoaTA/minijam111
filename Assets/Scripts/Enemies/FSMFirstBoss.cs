@@ -8,6 +8,14 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
+
+    [SerializeField] private float changeColorTimer = 3.0f;
+    [SerializeField] private float invulnerabilityTime = 5.0f;
+    [SerializeField] private int maxHealth;
+
+    private float currentHealth;
+    private float invulnerabiltyTimer = 0.0f;
+    private bool invulnerable; 
     
     private void OnDrawGizmos()
     {
@@ -43,9 +51,10 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Start()
     {
-       
         state = StateMachine.IDLE;
         ChangeState(StateMachine.IDLE);
+        currentHealth = maxHealth;
+        invulnerable = false;
     }
 
     private void Update()
@@ -122,6 +131,15 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 break;
         }
 
+        if (invulnerable)
+            invulnerabiltyTimer += Time.deltaTime;
+        
+        if (invulnerabiltyTimer >= invulnerabilityTime)
+        {
+            invulnerable = false;
+            invulnerabiltyTimer = 0f;
+        }
+        
         Looking();
     }
 
@@ -167,6 +185,15 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 direction.Normalize();
                 Vector3 desplacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
                 blackboard.navMeshAgent.SetDestination(desplacement);
+
+                if (!invulnerable)
+                {
+                    currentHealth--;
+                    if(currentHealth <= 0)
+                        Destroy(gameObject);
+
+                    invulnerable = true;
+                }
                 break;
             case StateMachine.ATTACK:
 
