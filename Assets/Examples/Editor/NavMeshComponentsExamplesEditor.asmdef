@@ -1,11 +1,7 @@
 {
     "name": "NavMeshComponentsExamplesEditor",
     "references": [
-        "NavMeshComponentsExamples",
-        "UnityEditor.UI",
-        "UnityEngine.UI",
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "NavMeshComponentsExamples"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [

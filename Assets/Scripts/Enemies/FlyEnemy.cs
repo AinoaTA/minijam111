@@ -43,6 +43,7 @@ public class FlyEnemy : MonoBehaviour, IHit
                            blackboard.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
                            blackboard.navMeshAgent.remainingDistance == 0)
             {
+                print("hola");
                 {
                     if (blackboard.attacking)
                     {
