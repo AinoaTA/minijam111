@@ -131,6 +131,7 @@ namespace Player
             //Reload
             if (Input.GetKeyDown(ReloadKeyCode))
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Switch Bullet", GetComponent<Transform>().position);
                 _weapon.ChangeWeaponColor();
             }
 
@@ -165,6 +166,7 @@ namespace Player
             //Shoot
             if (Input.GetMouseButtonDown(0) && _shootingTimer >= timeBetweenShots)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Revolver", GetComponent<Transform>().position);
                 _weapon.InstantiateProjectile();
                 _shootingTimer = 0f;
             } 
