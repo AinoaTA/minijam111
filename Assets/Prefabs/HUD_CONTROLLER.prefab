@@ -725,6 +725,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 2174692480553788290}
   gameOver: {fileID: 3903019777868016672}
   isPause: 0
+  isGameOver: 0
 --- !u!1 &1126160844139599185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,7 +2414,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5916521337338328949}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
