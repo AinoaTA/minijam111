@@ -8,7 +8,7 @@ namespace Others
     {
         [SerializeField] private HUDController hudController; 
         [SerializeField] private int maxHealth = 3;
-        [SerializeField] private int currHealth;
+        private int currHealth;
         [SerializeField] private float cooldownTimer = 2f;
         [SerializeField] private Animator damage;
         
