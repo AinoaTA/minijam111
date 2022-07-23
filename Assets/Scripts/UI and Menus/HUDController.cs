@@ -22,7 +22,7 @@ namespace UI_and_Menus
         [SerializeField] private CanvasGroup gameOver;
 
         [HideInInspector] public bool isPause;
-        private void Start()
+        private void Awake()
         {
             GameManager.gameManager.hudController = this;
         }

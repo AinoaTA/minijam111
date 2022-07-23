@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Fonts.meta
 guid: db8d107c52ace8a49803484efd26e852
 folderAsset: yes
+========
+guid: b55d59d6babeb1d40af1825a182ec26c
+>>>>>>>> 6f7de4fd4947d6f761eb82424d91988aeefc498f:Assets/Assets/3D/gypsy_curse.zip.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

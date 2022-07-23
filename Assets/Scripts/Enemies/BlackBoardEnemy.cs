@@ -40,8 +40,12 @@ public class BlackBoardEnemy : MonoBehaviour
 
     private void Start()
     {
-        
         eyeMaterial.material = allEyesMaterial[(int)colorEntity.colorType];
+    }
+
+    public void ChangeMaterial(ColorTypes color)
+    {
+        eyeMaterial.material = allEyesMaterial[(int)color];
     }
     public IEnumerator AttackRecovery()
     {

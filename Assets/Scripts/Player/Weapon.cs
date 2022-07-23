@@ -9,7 +9,6 @@ namespace Player
     {
         [SerializeField] private ColorTypes projectileColor = 0;
         [SerializeField] private bool shootFromFirePoint;
-        [SerializeField] private GameObject weaponModel;
         [SerializeField] private Animator weaponAnimator;
         [Header("Projectiles Data")]
         [SerializeField] private GameObject projectilePrefab;
@@ -28,7 +27,6 @@ namespace Player
         {
             weaponAnimator.Play("Idle");
             _mainCamera = Camera.main;
-            //_weaponRenderer = weaponModel.GetComponent<Renderer>();
             GameManager.gameManager.hudController.UpdateColor(projectileColor);
             //ApplyMaterialToProjectile();
         }
