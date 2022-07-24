@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2746261659464364407}
   - component: {fileID: 1275492830016110290}
   - component: {fileID: 3915742099835324952}
+  - component: {fileID: 8909165612646972933}
   m_Layer: 0
   m_Name: Mesa
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8909165612646972933
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267219423317306317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3101794883780484172, guid: 120f6cc07173b2b4f8940d1142c730b8, type: 3}
