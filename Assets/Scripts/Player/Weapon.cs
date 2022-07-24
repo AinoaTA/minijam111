@@ -40,7 +40,7 @@ namespace Player
         {
             projectileColor = ColorEntity.GetNextColor(projectileColor);
             GameManager.gameManager.hudController.UpdateColor(projectileColor);
-            // ApplyMaterialToProjectile();
+            //ApplyMaterialToProjectile();
         }
 
         public void SetVelocityIdle(float speed)
@@ -62,13 +62,14 @@ namespace Player
             else
             {
                 var centerScreen = new Vector3(Screen.height / 2, Screen.width / 2, 0);
-                firePosition = _mainCamera.ScreenToViewportPoint(new Vector3(0.5f, 0.5f,0));//_mainCamera.ScreenToWorldPoint(centerScreen);
+                firePosition = _mainCamera.ScreenToWorldPoint(centerScreen);
                 firePosition += _mainCamera.transform.forward* 0.1f;
             }
 
             var projectile = Instantiate(projectilePrefab, firePosition, Quaternion.identity);
         
             projectile.GetComponent<ColorEntity>().colorType = projectileColor;
+            projectile.GetComponent<Renderer>().material = GetMaterial();
         }
 
         private Material GetMaterial()
