@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     public void CheckBossesKilled()
     {
         if (bossesKilled.Count == 3)
-        {
             SceneManager.LoadScene(2);
-        }
     }
 }

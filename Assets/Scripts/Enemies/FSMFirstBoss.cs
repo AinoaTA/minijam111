@@ -324,7 +324,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         blackboard.animator.SetTrigger(Death);
         
         EnemySpawner.Instance.SpawnWave();
-        
+        GameManager.gameManager.CheckBossesKilled();
         StartCoroutine(Dissapear());
     }
 
