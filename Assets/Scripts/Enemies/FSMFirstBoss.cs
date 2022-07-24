@@ -278,7 +278,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Damage()
     {
-
         if (_invulnerable)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", transform.position);
@@ -323,7 +322,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         FMODUnity.RuntimeManager.PlayOneShot("event:/Music/New Wave", transform.position);
         blackboard.animator.SetTrigger(Death);
         
-        EnemySpawner.Instance.SpawnWave();
+        //EnemySpawner.Instance.SpawnWave();
         GameManager.gameManager.CheckBossesKilled();
         StartCoroutine(Dissapear());
     }
