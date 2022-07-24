@@ -1,6 +1,7 @@
 using UnityEngine;
 using UI_and_Menus;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (bossesKilled.Count == 3)
         {
-            
+            SceneManager.LoadScene(2);
         }
     }
 }
