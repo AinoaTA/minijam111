@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IHit
             if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
             {
                 blackboard.playerHealth.TakeDamage();
+                blackboard.animator.Play("Hit");
                 StartCoroutine(blackboard.AttackRecovery());
             }
         }

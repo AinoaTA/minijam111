@@ -26,13 +26,14 @@ public class BlackBoardEnemy : MonoBehaviour
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame = true;
     [HideInInspector] public bool looking, attacking, hit, death;
-    public Animator animator;
+    [HideInInspector] public Animator animator;
     [SerializeField] private bool isBoss;
     [SerializeField] private Material[] allBodiesMaterial;
     [SerializeField] private Renderer bodyMaterial;
     private ColorEntity colorEntity;
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         colorEntity = GetComponent<ColorEntity>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
