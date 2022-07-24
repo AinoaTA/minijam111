@@ -6,6 +6,9 @@ namespace UI_and_Menus
 {
     public class HUDController : MonoBehaviour
     {
+        //FMOD.Studio.Bus Music;
+        //float MusicVolume = 0.8f;
+
         [Header("Health Parts")]
         public Image[] hearts;
 
@@ -25,8 +28,14 @@ namespace UI_and_Menus
         [HideInInspector] public bool isGameOver;
         private void Awake()
         {
+            //Music = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
             GameManager.gameManager.hudController = this;
         }
+     
+        /*public void MusicVolumeLevel(float newMusicVolume)
+        {
+            MusicVolume = newMusicVolume;
+        }*/
         public void ShowCanvasGroup(CanvasGroup canvas) 
         {
             canvas.alpha = 1;
@@ -36,6 +45,7 @@ namespace UI_and_Menus
 
         public void HideCanvasGroup(CanvasGroup canvas)
         {
+            //MusicVolume = 0.8f;
             canvas.alpha = 0;
             canvas.blocksRaycasts = false;
             canvas.interactable =false;
@@ -87,6 +97,7 @@ namespace UI_and_Menus
         }
         public void GameOver()
         {
+            //MusicVolume = 0f;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Game Over T", GetComponent<Transform>().position);
             ShowCanvasGroup(gameOver);
             UnlockMouse(true);
@@ -96,6 +107,7 @@ namespace UI_and_Menus
 
         private void Update()
         {
+            //Music.setVolume(MusicVolume);
 #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.I))
                 GameOver();
