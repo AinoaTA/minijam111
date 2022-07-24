@@ -1689,6 +1689,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4025611184176094974, guid: 25977d89679c4224f805db864e05fbc5, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025611184176094974, guid: 25977d89679c4224f805db864e05fbc5, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: dcc1712a8686a1d4f88cbd15dca9e081, type: 2}
     - target: {fileID: 4661602547936876475, guid: 25977d89679c4224f805db864e05fbc5, type: 3}
       propertyPath: m_RootOrder
       value: 7

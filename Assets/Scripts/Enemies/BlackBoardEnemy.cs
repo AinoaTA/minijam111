@@ -48,7 +48,7 @@ public class BlackBoardEnemy : MonoBehaviour
 
     public void InitNewEnemyColor()
     {
-        colorEntity.colorType = (ColorTypes)Random.Range(0, 2);
+        colorEntity.colorType = (ColorTypes)Random.Range(0, 3);
         ChangeMaterial(colorEntity.colorType);
     }
     public void ChangeMaterial(ColorTypes color)

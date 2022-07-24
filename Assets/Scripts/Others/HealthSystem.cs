@@ -43,8 +43,8 @@ namespace Others
         {
             if (currHealth < maxHealth)
             {
-                currHealth++;
                 GameManager.gameManager.hudController.UpdateHearts(currHealth,false);
+                currHealth++;
             }
         }
 
