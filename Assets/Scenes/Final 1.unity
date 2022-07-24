@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 781505937758858511, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 781505937758858511, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1687308697529068534, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -173,6 +181,14 @@ PrefabInstance:
     - target: {fileID: 1687308697529068534, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400242428939512595, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400242428939512595, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.35
       objectReference: {fileID: 0}
     - target: {fileID: 6137498436600135847, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
       propertyPath: m_Name
@@ -1357,6 +1373,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
   m_PrefabInstance: {fileID: 535314275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &562057237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113618232082560949, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+  m_PrefabInstance: {fileID: 74058925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &562057238
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562057237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0018201
+  m_Center: {x: 1.6611834e-10, y: 1.6611834e-10, z: 0.00019771175}
+--- !u!114 &562057239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562057237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -371190697
+      Data2: 1222712073
+      Data3: 124664208
+      Data4: -1349375829
+    Path: event:/Environment/Toy Bell
+  Event: 
+  PlayEvent: 3
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &1376469449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1414,6 +1478,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9771a53c6fde144e8586d7e817119f8, type: 3}
+--- !u!1 &1415455737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3027702531665097129, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+  m_PrefabInstance: {fileID: 74058925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415455741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415455737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -717143367
+      Data2: 1163284837
+      Data3: 1076472969
+      Data4: 782281587
+    Path: event:/Environment/Sleigh Bell
+  Event: 
+  PlayEvent: 3
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!135 &1415455742
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415455737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009999999
+  m_Center: {x: -0.0000000013969838, y: 0, z: 0.000000044703484}
 --- !u!4 &1482203678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
@@ -1511,15 +1623,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.84
+      value: 11.6
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.89
+      value: 7.9
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.33
+      value: 30.8
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalRotation.w
