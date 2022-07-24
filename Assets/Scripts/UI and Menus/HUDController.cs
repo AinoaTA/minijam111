@@ -39,6 +39,7 @@ namespace UI_and_Menus
             {
                 StartCoroutine(TutorialDelay());
             }
+            Lock();
         }
         /*public void MusicVolumeLevel(float newMusicVolume)
         {
