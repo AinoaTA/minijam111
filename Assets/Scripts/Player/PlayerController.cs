@@ -19,6 +19,7 @@ namespace Player
         [Header("Player Movement")]
         [SerializeField] private float speed = 10.0f;
         [SerializeField] private float speedMultiplier = 1.0f;
+        [SerializeField] private float jumpSpeed = 5f;
         private CharacterController _characterController;
         private const KeyCode LeftKeyCode = KeyCode.A;
         private const KeyCode RightKeyCode = KeyCode.D;
@@ -36,6 +37,7 @@ namespace Player
         //Gravity
         private float _verticalSpeed;
         private bool _onGround;
+        private float _jumpSpeedMultiplier;
 
         //Cursor
     #if UNITY_EDITOR
@@ -101,12 +103,14 @@ namespace Player
             pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0.0f, 0.0f);
 
             //Movement
-            var movement = Vector3.zero;
+            Vector3 movement;
 
             var yawInRadians = _yaw * Mathf.Deg2Rad;
             var yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
             var forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
             var right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
+
+            movement = Vector3.zero;
 
             if (Input.GetKey(UpKeyCode))
             {
@@ -125,8 +129,21 @@ namespace Player
             {
                 movement -= right;
             }
-
+            
             speedMultiplier = Input.GetKey(SprintKeyCode) ? 1.5f : 1f;
+            movement.Normalize();
+            
+            
+            if (_onGround && _verticalSpeed == 0)
+            {
+                movement *= (Time.deltaTime * speed * speedMultiplier);
+            }
+            else
+            {
+                movement *= (Time.deltaTime * (speed*0.8f) * _jumpSpeedMultiplier);
+            }
+
+            
             
             //Reload
             if (Input.GetKeyDown(ReloadKeyCode))
@@ -135,11 +152,8 @@ namespace Player
                 _weapon.ChangeWeaponColor();
             }
 
-            movement.Normalize();
-            movement *= (Time.deltaTime * speed * speedMultiplier);
-
             //Gravity
-            _verticalSpeed += Physics.gravity.y * Time.deltaTime;
+            _verticalSpeed += (Physics.gravity.y * 0.8f) * Time.deltaTime;
             movement.y = _verticalSpeed * Time.deltaTime;
             var collisionFlags = _characterController.Move(movement);
 
@@ -158,12 +172,30 @@ namespace Player
                 _verticalSpeed = 0.0f;
             }
 
+            if (_characterController.isGrounded && Input.GetKeyDown(JumpKeyCode))
+            {
+                _verticalSpeed = Mathf.Sqrt(jumpSpeed * -2.0f * Physics.gravity.y);
+                _jumpSpeedMultiplier = speedMultiplier;
+            }
+            else if (_characterController.isGrounded)
+            {
+                _verticalSpeed = 0f;
+            }
+            else
+            {
+                _verticalSpeed += Physics.gravity.y * Time.fixedDeltaTime;
+            }
+            movement.y = _verticalSpeed;
+
+            /*
             if (Input.GetKey(JumpKeyCode) && _onGround)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Jump", GetComponent<Transform>().position);
-                _verticalSpeed = 5.0f;
+                _verticalSpeed = jumpSpeed;
+                jumpMovement = movement;
             }
-
+            */
+            
             //Shoot
             if (Input.GetMouseButtonDown(0) && _shootingTimer >= timeBetweenShots)
             {
@@ -171,7 +203,7 @@ namespace Player
                 _weapon.InstantiateProjectile();
                 _shootingTimer = 0f;
             } 
-                _weapon.SetVelocityIdle(Mathf.Clamp(_characterController.velocity.magnitude, 0.2f, 1.2f));
+            _weapon.SetVelocityIdle(Mathf.Clamp(_characterController.velocity.magnitude, 0.2f, 1.2f));
         }
     }
 }

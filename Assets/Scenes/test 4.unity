@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escenario
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac0052845b8eb9943b5cbc152d86914e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1835210009659533079, guid: ac0052845b8eb9943b5cbc152d86914e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
