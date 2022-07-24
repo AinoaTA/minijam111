@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Audio_Settings : MonoBehaviour
 {
-    //FMOD.Studio.EventInstance SFXVolumeTestEvent;
+    FMOD.Studio.EventInstance SFXVolumeTestEvent;
 
     FMOD.Studio.Bus Music;
     FMOD.Studio.Bus SFX;
@@ -18,7 +18,7 @@ public class Audio_Settings : MonoBehaviour
         Music = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
         SFX = FMODUnity.RuntimeManager.GetBus("bus:/Master/SFX");
         Master = FMODUnity.RuntimeManager.GetBus("bus:/Master");
-        //SFXVolumeTestEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SFX_LevelTest");
+        SFXVolumeTestEvent = FMODUnity.RuntimeManager.CreateInstance("event:/SFX_LevelTest");
     }
 
     public void Update()
@@ -36,7 +36,7 @@ public class Audio_Settings : MonoBehaviour
     {
         MusicVolume = newMusicVolume;
     }
-    /*public void SFXVolumeLevel(float newSFXVolume)
+    public void SFXVolumeLevel(float newSFXVolume)
     {
         SFXVolume = newSFXVolume;
 
@@ -46,7 +46,7 @@ public class Audio_Settings : MonoBehaviour
         {
             SFXVolumeTestEvent.start();
         }
-    }*/
+    }
 
     public void MuteToggle(bool muted) 
     {
