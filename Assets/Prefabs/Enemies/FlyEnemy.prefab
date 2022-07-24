@@ -212,6 +212,7 @@ MonoBehaviour:
   raycastDistance: 10
   recoveryAttackTime: 1
   angle: 40
+  yPos: 0
   navMeshAgent: {fileID: 3329119531955133870}
   player: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -220,6 +221,7 @@ MonoBehaviour:
   attacking: 0
   hit: 0
   death: 0
+  animator: {fileID: 0}
   isBoss: 0
   allBodiesMaterial:
   - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
@@ -417,6 +419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
+--- !u!1 &1218751349113393346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
+  m_PrefabInstance: {fileID: 2029071970701913491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1991170793804843640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
@@ -427,3 +434,22 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 652bbf6573072584ab407cc5958c5d08, type: 3}
   m_PrefabInstance: {fileID: 2029071970701913491}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1152667891260936025
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218751349113393346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 362322e928d54264d8b5a67a9fc153ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

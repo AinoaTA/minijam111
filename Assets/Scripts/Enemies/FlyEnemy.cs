@@ -24,6 +24,7 @@ public class FlyEnemy : MonoBehaviour, IHit
         blackboard = GetComponent<BlackBoardEnemy>();
     }
 
+
     void Update()
     {
         if (!blackboard.enabledGame|| blackboard.death)
@@ -38,6 +39,7 @@ public class FlyEnemy : MonoBehaviour, IHit
             if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
             {
                 ThrowProjectile();
+                blackboard.animator.Play("Hit");
                 StartCoroutine(blackboard.AttackRecovery());
             }
         }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; set; }
 
     public HUDController hudController { get; set; }
-    public List<string> bossesKilled = new List<string>();
+    [HideInInspector]public List<string> bossesKilled = new List<string>();
 
     private void Awake()
     {
