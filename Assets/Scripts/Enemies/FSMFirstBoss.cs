@@ -189,7 +189,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Attack()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Melee", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Melee", transform.position);
         var random = Random.Range(0, 2);
         switch (random)
         {
@@ -280,11 +280,11 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
         if (_invulnerable)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", transform.position);
             return;
         }
 
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", transform.position);
         _currentHealth--;
         if (_currentHealth <= 0)
             Die();
@@ -314,7 +314,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         blackboard.death = true;
         GameManager.gameManager.bossesKilled.Add(id_boss);
         StartCoroutine(blackboard.FixDeathPos());
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", transform.position);
         blackboard.animator.SetTrigger(Death);
         StartCoroutine(Dissapear());
     }
@@ -326,7 +326,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     }
     public void BeingHit()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", transform.position);
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);
