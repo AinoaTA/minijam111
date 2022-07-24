@@ -118,6 +118,7 @@ namespace UI_and_Menus
             ShowCanvasGroup(tutorial);
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1));
             HideCanvasGroup(tutorial);
+            GameManager.gameManager.firstTime = false;
         }
     }
 }
