@@ -22,7 +22,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private float _changeColorTimer = 0.0f;
     public bool _invulnerable;
 
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Animator animator;
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int Punch = Animator.StringToHash("OnPunchTrigger");
     private static readonly int Kick = Animator.StringToHash("OnKickTrigger");
@@ -142,16 +142,16 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
                 if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
                 {
-                    animator.SetBool(Idle, true);
+                    blackboard.animator.SetBool(Idle, true);
                     Attack();
                 }
                 else if (blackboard.attacking && Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance)
                 {
-                    animator.SetBool(Idle, true);
+                    blackboard.animator.SetBool(Idle, true);
                 }
                 else
                 {
-                    animator.SetBool(Idle, false);
+                    blackboard.animator.SetBool(Idle, false);
                 }
                 break;
             default:
@@ -169,7 +169,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         if (_invulnerable)
             _invulnerabilityTimer += Time.deltaTime;
         else
-            animator.SetBool(Invulnerable, false);
+            blackboard.animator.SetBool(Invulnerable, false);
         
         if (_invulnerabilityTimer >= invulnerabilityTime)
         {
@@ -188,10 +188,10 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (random)
         {
             case 0:
-                animator.SetTrigger(Punch);
+                blackboard.animator.SetTrigger(Punch);
                 break;
             case 1:
-                animator.SetTrigger(Kick);
+                blackboard.animator.SetTrigger(Kick);
                 break;
         }
 
@@ -227,7 +227,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (newState)
         {
             case StateMachine.IDLE:
-                animator.SetBool(Idle, true);
+                blackboard.animator.SetBool(Idle, true);
                 if (blackboard.navMeshAgent.remainingDistance != Mathf.Infinity &&
                        blackboard.navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete &&
                        blackboard.navMeshAgent.remainingDistance == 0)
@@ -255,7 +255,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         switch (state)
         {
             case StateMachine.IDLE:
-                animator.SetBool(Idle, false);
+                blackboard.animator.SetBool(Idle, false);
                 break;
             case StateMachine.WALK:
                 break;
@@ -287,7 +287,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
         _invulnerable = true;
         invulnerableVFX.SetActive(true);
-        animator.SetBool(Invulnerable, true);
+        blackboard.animator.SetBool(Invulnerable, true);
     }
 
     IEnumerator WaitForSomething(float s, Action action)
@@ -308,9 +308,9 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         blackboard.navMeshAgent.isStopped = true;
         blackboard.death = true;
-        StartCoroutine(blackboard.FixDeathPos(new Vector3(transform.position.x, -1.777f, transform.position.z)));
+        StartCoroutine(blackboard.FixDeathPos());
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
-        animator.SetTrigger(Death);
+        blackboard.animator.SetTrigger(Death);
         Destroy(gameObject, 7f);
     }
 

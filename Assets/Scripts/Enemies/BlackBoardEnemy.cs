@@ -20,13 +20,14 @@ public class BlackBoardEnemy : MonoBehaviour
     public float recoveryAttackTime=1;
     [Range(0,360)]
     public float angle;
+    [SerializeField] private float yPos;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector]public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
     [HideInInspector] public bool enabledGame=true;
     [HideInInspector] public bool looking, attacking, hit, death;
-
-     [SerializeField] private bool isBoss;
+    public Animator animator;
+    [SerializeField] private bool isBoss;
     [SerializeField] private Material[] allBodiesMaterial;
     [SerializeField] private Renderer bodyMaterial;
     private ColorEntity colorEntity;
@@ -66,21 +67,20 @@ public class BlackBoardEnemy : MonoBehaviour
         return navHit.position;
     }
 
-    public IEnumerator FixDeathPos(Vector3 newPos, float estimatedTime=1)
+    public IEnumerator FixDeathPos(float estimatedTime=0.2f, float animdDur = 2f)
     {
-        float y = newPos.y;
-        Vector3 currPos = bodyMaterial.transform.localPosition;
-        newPos = currPos;
-        newPos.y = y;
-       
+        yield return new WaitForSeconds(animdDur);
+        animator.enabled = false;
+        Vector3 currPos = bodyMaterial.transform.parent.transform.localPosition;
+        Vector3 newPos = currPos;
+        newPos.y = yPos;
         float i = 0;
         while (i < estimatedTime)
         {
-            print("alo");
             i += Time.deltaTime;
-            bodyMaterial.transform.localPosition = Vector3.Lerp(currPos, newPos, i / estimatedTime);
+            bodyMaterial.transform.parent.transform.localPosition = Vector3.Lerp(currPos, newPos, i / estimatedTime);
             yield return null;
-
         }
+        animator.enabled = true;
     }
 }
