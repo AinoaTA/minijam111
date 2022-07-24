@@ -87,6 +87,7 @@ namespace UI_and_Menus
         }
         public void GameOver()
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Game Over T", GetComponent<Transform>().position);
             ShowCanvasGroup(gameOver);
             UnlockMouse(true);
             Time.timeScale = 0;
