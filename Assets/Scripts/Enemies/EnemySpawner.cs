@@ -131,10 +131,10 @@ public class EnemySpawner : MonoBehaviour
                 var location = SpawnNear(spawnPos, 0.1f, spawnPositionsRadius);
                 var randomEnemy = ChooseRandomEnemy();
                 
-                Instantiate(randomEnemy, location, Quaternion.identity);
+               BlackBoardEnemy obj= Instantiate(randomEnemy, location, Quaternion.identity).GetComponent<BlackBoardEnemy>();
+                obj.InitNewEnemyColor();
             }
         }
-
     }
     
     

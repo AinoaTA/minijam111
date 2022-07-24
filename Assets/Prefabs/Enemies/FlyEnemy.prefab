@@ -172,7 +172,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3329119531955133859}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 0
   m_Radius: 0.7
   m_Speed: 3.5
   m_Acceleration: 8
@@ -208,7 +208,7 @@ MonoBehaviour:
   speed: 4.5
   layerMask:
     serializedVersion: 2
-    m_Bits: 15361
+    m_Bits: 48129
   raycastDistance: 10
   recoveryAttackTime: 1
   angle: 40
@@ -221,7 +221,7 @@ MonoBehaviour:
   attacking: 0
   hit: 0
   death: 0
-  animator: {fileID: 0}
+  animator: {fileID: 1152667891260936025}
   isBoss: 0
   allBodiesMaterial:
   - {fileID: 2100000, guid: 08dbdf59b4439b14daed45c6c16c7275, type: 2}
