@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5971409906310412710}
   - component: {fileID: 7309744862498027011}
   - component: {fileID: 4797909687267656393}
+  - component: {fileID: 6198543232057308778}
   m_Layer: 0
   m_Name: Estanteria_Grande
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6198543232057308778
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455176694185665308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8361634713972248919, guid: d7f420350f7e7a9439aa0a7c1d42d3b6, type: 3}

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1687308697529068534
 Transform:
@@ -124,6 +124,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Estante_Bajo
       objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
 --- !u!4 &8333051897324079393 stripped
@@ -197,6 +205,14 @@ PrefabInstance:
     - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
       propertyPath: m_Name
       value: Estanteria_Pequena
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1564326169208830971, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -280,6 +296,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silla (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
 --- !u!4 &4605246934859734124 stripped
@@ -297,6 +321,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -436,6 +468,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Estanteria_Grande (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6455176694185665308, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455176694185665308, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
 --- !u!4 &5368767016036469133 stripped
@@ -453,6 +493,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -521,6 +569,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 2218135335647793056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4216105843959451943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 2218135335647793056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6858808669751250115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216105843959451943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: 1.0819118e-14, z: -0.00037174212}
 --- !u!1001 &2321302856640929586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,6 +597,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -594,11 +668,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b349826bc33bcd248bb7fa94cd0a722d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+--- !u!1 &323158693288804789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 2321302856640929586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1096564601962584847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 2321302856640929586}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &7560546240109169494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323158693288804789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: 1.0819118e-14, z: -0.00037174026}
 --- !u!1001 &2502825955950546065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +761,14 @@ PrefabInstance:
     - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
       propertyPath: m_Name
       value: Silla (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
@@ -748,6 +848,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silla
       objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
 --- !u!4 &1168081967902850755 stripped
@@ -765,6 +873,14 @@ PrefabInstance:
     - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
       propertyPath: m_Name
       value: Estante_Medio (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5379587154948752637, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
       propertyPath: m_RootOrder
@@ -844,6 +960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Estantes (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -906,11 +1030,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b349826bc33bcd248bb7fa94cd0a722d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+--- !u!1 &2216843487717932650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 4217960596478435565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1551525001434293456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 4217960596478435565}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &8791193963021174692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216843487717932650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: 1.0819118e-14, z: -0.00037174212}
 --- !u!1001 &4347961099682833750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,6 +1123,14 @@ PrefabInstance:
     - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
       propertyPath: m_Name
       value: Estante_Bajo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
@@ -1060,6 +1210,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silla (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457982202640290695, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d853a2399dc20bf4095c3aa41ca67f45, type: 3}
 --- !u!4 &691000490718968770 stripped
@@ -1133,6 +1291,14 @@ PrefabInstance:
     - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
       propertyPath: m_Name
       value: Estanteria_Pequena (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059865630408546862, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1564326169208830971, guid: 43fe420f1ed9abc44a11be739fa4147e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1212,6 +1378,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tienda
       objectReference: {fileID: 0}
+    - target: {fileID: 3339489249321735954, guid: 4e2650020f01e604b8e122f01baac378, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339489249321735954, guid: 4e2650020f01e604b8e122f01baac378, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e2650020f01e604b8e122f01baac378, type: 3}
 --- !u!4 &8489433860884978941 stripped
@@ -1219,6 +1393,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2671742251092053416, guid: 4e2650020f01e604b8e122f01baac378, type: 3}
   m_PrefabInstance: {fileID: 5819609999131169109}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9122981894542624327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3339489249321735954, guid: 4e2650020f01e604b8e122f01baac378, type: 3}
+  m_PrefabInstance: {fileID: 5819609999131169109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1706627762
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122981894542624327}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7762608530809092995, guid: 46cea7ba8e400bc4b829b96a2cff1188, type: 3}
 --- !u!1001 &5862631741651282882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,6 +1422,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -1292,11 +1493,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b349826bc33bcd248bb7fa94cd0a722d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+--- !u!1 &8437136807017870661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 5862631741651282882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9105552312614268927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 5862631741651282882}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &7484666772737354161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437136807017870661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: -0.0000000037252794, z: -0.00037174026}
 --- !u!1001 &5941470428037798124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1364,6 +1583,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesa
       objectReference: {fileID: 0}
+    - target: {fileID: 3267219423317306317, guid: a668c08f562ebd543865f6283bb2c0d4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267219423317306317, guid: a668c08f562ebd543865f6283bb2c0d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3915742099835324952, guid: a668c08f562ebd543865f6283bb2c0d4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1385,6 +1612,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -1448,11 +1683,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b349826bc33bcd248bb7fa94cd0a722d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+--- !u!1 &5002590977527204607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 7000351139178009720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5631493299482464325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 7000351139178009720}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2575014565380518080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5002590977527204607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: -0.0000000037252794, z: -0.00037174212}
 --- !u!1001 &7703898819717804909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1463,6 +1716,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -1531,6 +1792,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 7703898819717804909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5666448143096819178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 7703898819717804909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8441877788437486699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5666448143096819178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: 4.656721e-10, z: -0.00037174212}
 --- !u!1001 &7744127138721598068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1541,6 +1820,14 @@ PrefabInstance:
     - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_Name
       value: Estantes (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
       propertyPath: m_RootOrder
@@ -1604,11 +1891,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b349826bc33bcd248bb7fa94cd0a722d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+--- !u!1 &5706712886640317683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2615179304381816455, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
+  m_PrefabInstance: {fileID: 7744127138721598068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4934117313946799689 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3387035760448357437, guid: 4686c68cd0a193c4da5789bf0e15f3ec, type: 3}
   m_PrefabInstance: {fileID: 7744127138721598068}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &8022202856746424870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706712886640317683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0052694576, y: 0.020000001, z: 0.0015434844}
+  m_Center: {x: 0.00013472897, y: 1.0819118e-14, z: -0.00037174212}
 --- !u!1001 &8695884931327252308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,6 +1924,14 @@ PrefabInstance:
     - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
       propertyPath: m_Name
       value: Estante_Medio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747905267663494727, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5379587154948752637, guid: 88c39a06d8455f24a9b731c60778efea, type: 3}
       propertyPath: m_RootOrder
@@ -1758,6 +2071,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Estante_Bajo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654899839209591704, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5f1f40a78419e345b1b0db17fee7b5a, type: 3}
 --- !u!4 &757390668095213217 stripped
@@ -1832,9 +2153,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6198543232057308778, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6455176694185665308, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
       propertyPath: m_Name
       value: Estanteria_Grande
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455176694185665308, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6455176694185665308, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ce26a22781ab244a458cfc42d89ad7, type: 3}
