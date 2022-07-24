@@ -28,9 +28,9 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private static readonly int Kick = Animator.StringToHash("OnKickTrigger");
     private static readonly int Death = Animator.StringToHash("OnDeathTrigger");
     private static readonly int Invulnerable = Animator.StringToHash("Invulnerable");
-    
+
     [SerializeField] private GameObject invulnerableVFX;
-    
+
 
     private void OnDrawGizmos()
     {
@@ -48,7 +48,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             Quaternion downRayRotation = Quaternion.AngleAxis(halfFOV + coneDirection, Vector3.up);
 
             Vector3 upRayDirection = upRayRotation * -transform.forward * rayRange;
-            Vector3 downRayDirection = downRayRotation * - transform.forward * rayRange;
+            Vector3 downRayDirection = downRayRotation * -transform.forward * rayRange;
 
             if (!blackboard.looking)
                 Gizmos.color = Color.red;
@@ -85,7 +85,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         if (!blackboard.enabledGame || blackboard.death)
             return;
-       
+
         switch (state)
         {
             case StateMachine.IDLE:
@@ -94,7 +94,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             case StateMachine.WALK:
                 if (!blackboard.navMeshAgent.hasPath)
                 {
-                    blackboard.navMeshAgent.SetDestination(blackboard.RandomNavSphere(transform.position,blackboard.minDetectDistance,1));
+                    blackboard.navMeshAgent.SetDestination(blackboard.RandomNavSphere(transform.position, blackboard.minDetectDistance, 1));
                 }
                 else if (blackboard.looking)
                 {
@@ -171,19 +171,19 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             blackboard.ChangeMaterial(_colorEntity.colorType);
             _changeColorTimer = 0f;
         }
-        
+
         if (_invulnerable)
             _invulnerabilityTimer += Time.deltaTime;
         else
             blackboard.animator.SetBool(Invulnerable, false);
-        
+
         if (_invulnerabilityTimer >= invulnerabilityTime)
         {
             _invulnerable = false;
             invulnerableVFX.SetActive(false);
             _invulnerabilityTimer = 0f;
         }
-        
+
         Looking();
     }
 
@@ -202,7 +202,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         }
 
         blackboard.attacking = true;
-        //blackboard.playerHealth.TakeDamage();
+        blackboard.playerHealth.TakeDamage();
         StartCoroutine(blackboard.AttackRecovery());
     }
 
@@ -218,9 +218,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 {
                     angle = Vector3.Angle(hit.point - transform.position, transform.forward);
                     if (angle < blackboard.angle / 2)
-                    {
                         blackboard.looking = true;
-                    }
                 }
                 else
                     blackboard.looking = false;
@@ -249,7 +247,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 direction.Normalize();
                 Vector3 displacement = blackboard.player.transform.position - direction * blackboard.minApproximation;
                 blackboard.navMeshAgent.SetDestination(displacement);
-                
+
                 break;
             case StateMachine.ATTACK:
 
@@ -285,10 +283,10 @@ public class FSMFirstBoss : MonoBehaviour, IHit
             FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
             return;
         }
-        
+
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", GetComponent<Transform>().position);
         _currentHealth--;
-        if(_currentHealth <= 0)
+        if (_currentHealth <= 0)
             Die();
 
         _invulnerable = true;
@@ -304,7 +302,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     public void Attacked()
     {
         Damage();
-        
+
         if (blackboard.hit)
             return;
         ChangeState(StateMachine.HIT);

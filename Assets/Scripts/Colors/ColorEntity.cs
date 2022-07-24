@@ -11,8 +11,8 @@ namespace Colors
         public void RunInteraction(GameObject otherEntity)
         {
             var otherEntityColor = otherEntity.GetComponent<ColorEntity>().colorType;
-            
-            if ( colorType == otherEntityColor)
+
+            if (colorType == otherEntityColor)
             {
                 if (otherEntity.TryGetComponent(out FSMFirstBoss boss))
                 {
@@ -30,7 +30,7 @@ namespace Colors
                 {
                     otherEntity.GetComponent<IHit>().Attacked();
                 }
-                
+
             }
             else
             {
@@ -38,11 +38,11 @@ namespace Colors
                 {
                     otherEntity.GetComponent<IHit>().BeingHit();
                 }
-               
+
                 //POWER UP ENTITY
             }
         }
-        
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out ColorEntity coloredEntity) && collision.gameObject.CompareTag("Enemy"))
@@ -50,7 +50,7 @@ namespace Colors
                 RunInteraction(collision.gameObject);
             }
         }
-        
+
         public static ColorTypes GetNextColor(ColorTypes color)
         {
 
