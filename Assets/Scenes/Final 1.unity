@@ -180,6 +180,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+--- !u!1 &74058926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7154339624457517311, guid: 58902a12b00c84d4cae6ab37a98179d6, type: 3}
+  m_PrefabInstance: {fileID: 74058925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &74058927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74058926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1984727413
+      Data2: 1076054120
+      Data3: 132187838
+      Data4: 1925321144
+    Path: event:/Environment/Radio
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &247821261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,15 +1511,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.32
+      value: -4.84
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: 12.89
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.46
+      value: -30.33
       objectReference: {fileID: 0}
     - target: {fileID: 443648494184558653, guid: 83d29136056e1f045abcb43a8190ad3c, type: 3}
       propertyPath: m_LocalRotation.w
