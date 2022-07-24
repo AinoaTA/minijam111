@@ -23,7 +23,7 @@ namespace Others
             if (cooldown)
                 return;
 
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Damage", GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Damage", transform.position);
             damage.Play("Damage");
             StartCoroutine(Cooldown());
             currHealth--;
@@ -43,6 +43,7 @@ namespace Others
         {
             if (currHealth < maxHealth)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Music/New Wave", transform.position);
                 GameManager.gameManager.hudController.UpdateHearts(currHealth,false);
                 currHealth++;
             }
