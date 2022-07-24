@@ -1,4 +1,5 @@
 using Colors;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ namespace UI_and_Menus
         [Header("Menus Parts")]
         [SerializeField] private CanvasGroup pauseMenu;
         [SerializeField] private CanvasGroup gameOver;
+        [SerializeField] private CanvasGroup tutorial;
 
         [HideInInspector] public bool isPause;
         [HideInInspector] public bool isGameOver;
@@ -31,7 +33,13 @@ namespace UI_and_Menus
             //Music = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
             GameManager.gameManager.hudController = this;
         }
-     
+        private void Start()
+        {
+            if (GameManager.gameManager.firstTime)
+            {
+                StartCoroutine(TutorialDelay());
+            }
+        }
         /*public void MusicVolumeLevel(float newMusicVolume)
         {
             MusicVolume = newMusicVolume;
@@ -105,13 +113,11 @@ namespace UI_and_Menus
             isGameOver = true;
         }
 
-        private void Update()
+        IEnumerator TutorialDelay()
         {
-            //Music.setVolume(MusicVolume);
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.I))
-                GameOver();
-#endif
+            ShowCanvasGroup(tutorial);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1));
+            HideCanvasGroup(tutorial);
         }
     }
 }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public HUDController hudController { get; set; }
     [HideInInspector]public List<string> bossesKilled = new List<string>();
-
+    public bool firstTime { get; set; }
     private void Awake()
     {
         if (gameManager == null)
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        firstTime=true;
     }
 
     public void CheckBossesKilled()
