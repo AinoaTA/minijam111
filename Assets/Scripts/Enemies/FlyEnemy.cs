@@ -26,9 +26,10 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     void Update()
     {
+        
         if (!blackboard.enabledGame || blackboard.hit)
             return;
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Flying", GetComponent<Transform>().position);
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)
         {
             GetDir();
@@ -62,7 +63,6 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     private void GetDir()
     {
-        //FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Flying", GetComponent<Transform>().position);
         dir = (blackboard.player.transform.position - transform.position).normalized;
 
         Vector3 destination = blackboard.player.transform.position - dir * blackboard.minApproximation;
