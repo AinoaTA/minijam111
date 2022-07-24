@@ -224,9 +224,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   isBoss: 0
   allBodiesMaterial:
-  - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
-  - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
-  - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
+  - {fileID: 2100000, guid: 08dbdf59b4439b14daed45c6c16c7275, type: 2}
+  - {fileID: 2100000, guid: 6ef6c00bfd9eb704c9624d0dff1e1764, type: 2}
+  - {fileID: 2100000, guid: c671bf4762d13ce4080845e419ade98e, type: 2}
   bodyMaterial: {fileID: 858256327514861847}
 --- !u!114 &3329119531955133869
 MonoBehaviour:
