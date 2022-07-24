@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6222804540766410519}
   - component: {fileID: 7058280087172339890}
   - component: {fileID: 5048811289138048120}
+  - component: {fileID: 4985338094990596145}
   m_Layer: 0
   m_Name: Pelotas_Canicas
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &4985338094990596145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705868014545374637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0016576794
+  m_Center: {x: -1.1641534e-10, y: 1.7347235e-18, z: 1.7347235e-18}
