@@ -62,14 +62,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance is null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
+        Instance = this;
     }
 
     private void Start()
@@ -91,11 +84,10 @@ public class EnemySpawner : MonoBehaviour
 
         if (_spawnTimer >= timeBetweenSpawns)
         {
-
             var location = SpawnNear(player.transform, minDistance, maxDistance);
-            var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+            var randomEnemy = ChooseRandomEnemy();
             
-            Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity);
+            Instantiate(randomEnemy, location, Quaternion.identity);
             _spawnTimer = 0f;
         }
 
@@ -120,9 +112,9 @@ public class EnemySpawner : MonoBehaviour
                     if (_waveSpawnTimer >= timeBetweenWaveSpawn)
                     {
                         var location = SpawnNear(player.transform, waveMinDistance, waveMaxDistance);
-                        var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+                        var randomEnemy = ChooseRandomEnemy();
                         
-                        Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity); 
+                        Instantiate(randomEnemy, location, Quaternion.identity); 
                     }
                     
                 }
@@ -137,9 +129,9 @@ public class EnemySpawner : MonoBehaviour
             for(var i = 0; i < enemiesPerSpawnPosition; i++)
             {
                 var location = SpawnNear(spawnPos, 0.1f, spawnPositionsRadius);
-                var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+                var randomEnemy = ChooseRandomEnemy();
                 
-                Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity);
+                Instantiate(randomEnemy, location, Quaternion.identity);
             }
         }
 
@@ -173,6 +165,13 @@ public class EnemySpawner : MonoBehaviour
         return Vector3.Distance(hit.position, player.transform.position) < minDistance ? RandomNavMeshLocation(Random.Range(minDistance, maxDistance)) : randomPoint;
     }
 
+    private GameObject ChooseRandomEnemy()
+    {
+        var randomEnemy = Random.Range(0, enemyPrefabList.Count);
+
+        return enemyPrefabList[randomEnemy];
+    }
+
     private void GenerateEnemyWave()
     {
         for (int i = 0; i < enemiesPerWave; i++)
@@ -199,7 +198,7 @@ public class EnemySpawner : MonoBehaviour
         
         var randomRadius = Random.Range(minRadius, maxRadius);
         var randomDirection = Random.insideUnitSphere;
-        var randomPoint = player.transform.position + randomDirection * randomRadius;
+        var randomPoint = nearPosition.position + randomDirection * randomRadius;
 
         if (NavMesh.SamplePosition(randomPoint, out var hit, randomRadius, 1))
         {
