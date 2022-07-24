@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2924353164865036003}
   - component: {fileID: 2924353164865036002}
   - component: {fileID: 1542719558689782805}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: All
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 2924353165173917547}
   - component: {fileID: 2924353165173917544}
   - component: {fileID: 2924353165173917545}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2924353165388133095}
   - component: {fileID: 2924353165388133096}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HealthObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2924353166354542791}
   - component: {fileID: 2924353166354542788}
   - component: {fileID: 2924353166354542789}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7189440438759074359}
   - component: {fileID: 8072287993155835}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 335690347588535499}
   - component: {fileID: 8021762726697362931}
   - component: {fileID: 2724556728447771910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
