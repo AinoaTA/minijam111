@@ -5713,6 +5713,7 @@ MonoBehaviour:
   changeColorTime: 3
   invulnerabilityTime: 5
   maxHealth: 3
+  timeToDissapear: 5
   _invulnerable: 0
   invulnerableVFX: {fileID: 5883973299200088187}
 --- !u!114 &9149394449136972739
@@ -5728,13 +5729,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDetectDistance: 10
-  minAttackDistance: 2
+  minAttackDistance: 2.6
   minFollowingDistance: 20
   minWanderDistance: 7
-  minApproximation: 1.5
+  minApproximation: 2.5
   timer: 2
   waitTimer: 2
-  speed: 0
+  speed: 4
   layerMask:
     serializedVersion: 2
     m_Bits: 7745
@@ -5756,7 +5757,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d658cde0a606ffe4a868fecc02605482, type: 2}
   - {fileID: 2100000, guid: b74e2c3a249065941854722e15e4bd4c, type: 2}
   - {fileID: 2100000, guid: f7b09f8aa3b058544ba38207da4bde35, type: 2}
+  allEyesColor: []
   bodyMaterial: {fileID: 5165446464035101196}
+  eyeLights: []
 --- !u!114 &9149394449136972737
 MonoBehaviour:
   m_ObjectHideFlags: 0

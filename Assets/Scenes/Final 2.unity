@@ -1248,6 +1248,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2003788427}
     - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: minApproximation
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: minAttackDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: parentInterestingPoints
       value: 
       objectReference: {fileID: 0}
