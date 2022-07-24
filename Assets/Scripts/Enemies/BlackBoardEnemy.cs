@@ -17,14 +17,14 @@ public class BlackBoardEnemy : MonoBehaviour
     public float speed;
     public LayerMask layerMask;
     public float raycastDistance;
-    public float recoveryAttackTime=1;
-    [Range(0,360)]
+    public float recoveryAttackTime = 1;
+    [Range(0, 360)]
     public float angle;
     [SerializeField] private float yPos;
     [HideInInspector] public NavMeshAgent navMeshAgent;
-    [HideInInspector]public GameObject player;
+    [HideInInspector] public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
-    [HideInInspector] public bool enabledGame=true;
+    [HideInInspector] public bool enabledGame = true;
     [HideInInspector] public bool looking, attacking, hit, death;
     public Animator animator;
     [SerializeField] private bool isBoss;
@@ -67,7 +67,7 @@ public class BlackBoardEnemy : MonoBehaviour
         return navHit.position;
     }
 
-    public IEnumerator FixDeathPos(float estimatedTime=0.2f, float animdDur = 2f)
+    public IEnumerator FixDeathPos(float estimatedTime = 0.2f, float animdDur = 2f)
     {
         yield return new WaitForSeconds(animdDur);
         animator.enabled = false;

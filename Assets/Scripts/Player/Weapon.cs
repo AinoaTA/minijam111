@@ -30,11 +30,11 @@ namespace Player
             //ApplyMaterialToProjectile();
         }
 
-        private void ApplyMaterialToProjectile()
-        {
-            var material = GetMaterial();
-            //_weaponRenderer.material = material;
-        }
+        //private void ApplyMaterialToProjectile()
+        //{
+        //    var material = GetMaterial();
+        //    _weaponRenderer.material = material;
+        //}
 
         public void ChangeWeaponColor()
         {
