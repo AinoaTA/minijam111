@@ -19,7 +19,23 @@ namespace Projectiles
         private void Start()
         {
             if (Camera.main != null)
-                GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * projectileSpeed;
+            {
+                Vector3 bulletDirection;
+                Transform cam = Camera.main.transform;
+                Ray ray = new Ray(cam.position, cam.forward);
+
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    bulletDirection = hit.point - transform.position;
+                }
+                else
+                {
+                    bulletDirection = (Camera.main.transform.position + Camera.main.transform.forward * 1000) - transform.position;
+                }
+
+                bulletDirection.Normalize();
+                GetComponent<Rigidbody>().velocity = bulletDirection * projectileSpeed;
+            }
 
             _color = GetComponent<ColorEntity>().colorType;
             GetComponent<Renderer>().material = GetMaterial();
