@@ -19,6 +19,7 @@ namespace Player
         [Header("Player Movement")]
         [SerializeField] private float speed = 10.0f;
         [SerializeField] private float speedMultiplier = 1.0f;
+        [SerializeField] private float jumpSpeed = 5f;
         private CharacterController _characterController;
         private const KeyCode LeftKeyCode = KeyCode.A;
         private const KeyCode RightKeyCode = KeyCode.D;
@@ -161,7 +162,7 @@ namespace Player
             if (Input.GetKey(JumpKeyCode) && _onGround)
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Jump", GetComponent<Transform>().position);
-                _verticalSpeed = 5.0f;
+                _verticalSpeed = jumpSpeed;
             }
 
             //Shoot
