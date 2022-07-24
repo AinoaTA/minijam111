@@ -172,7 +172,7 @@ namespace Player
                 _verticalSpeed = 0.0f;
             }
 
-            if (_characterController.isGrounded && Input.GetKeyDown(JumpKeyCode))
+            if (_onGround && Input.GetKeyDown(JumpKeyCode))
             {
                 _verticalSpeed = Mathf.Sqrt(jumpSpeed * -2.0f * Physics.gravity.y);
                 _jumpSpeedMultiplier = speedMultiplier;
