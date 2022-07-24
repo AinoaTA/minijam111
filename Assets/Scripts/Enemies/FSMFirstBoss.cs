@@ -287,7 +287,11 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Hit", transform.position);
         _currentHealth--;
         if (_currentHealth <= 0)
+        {
             Die();
+            return;
+        }
+            
 
         _invulnerable = true;
         invulnerableVFX.SetActive(true);
