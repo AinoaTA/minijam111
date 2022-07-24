@@ -1059,6 +1059,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.018087598
       objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972736, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: id_boss
+      value: Boss_3
+      objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1298,6 +1302,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972736, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: id_boss
+      value: Boss_1
+      objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1343,6 +1351,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: yPos
+      value: -1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972739, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2003788427}
@@ -1357,6 +1369,10 @@ PrefabInstance:
     - target: {fileID: 9149394449136972748, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_Name
       value: Boss1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972749, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972749, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_AgentTypeID
@@ -1780,10 +1796,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1126160843506053444, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.19995117
-      objectReference: {fileID: 0}
     - target: {fileID: 1126160844041865655, guid: 6f1a0923f6facdf48a3c5823819b88d2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2091,6 +2103,10 @@ PrefabInstance:
     - target: {fileID: 5728106422946770548, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149394449136972736, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
+      propertyPath: id_boss
+      value: Boss_2
       objectReference: {fileID: 0}
     - target: {fileID: 9149394449136972738, guid: be429c6ac3b707a418f2df08aac55eae, type: 3}
       propertyPath: m_RootOrder

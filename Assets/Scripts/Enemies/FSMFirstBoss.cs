@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class FSMFirstBoss : MonoBehaviour, IHit
 {
     private BlackBoardEnemy blackboard;
-
+    public string id_boss;
     public enum StateMachine { IDLE, WALK, HIT, ATTACK }
     public StateMachine state;
 
@@ -67,16 +67,22 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Start()
     {
-        state = StateMachine.IDLE;
-        ChangeState(StateMachine.IDLE);
-        _currentHealth = maxHealth;
-        _invulnerable = false;
-        invulnerableVFX.SetActive(false);
+        if (GameManager.gameManager.bossesKilled.Contains(id_boss))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            state = StateMachine.IDLE;
+            ChangeState(StateMachine.IDLE);
+            _currentHealth = maxHealth;
+            _invulnerable = false;
+            invulnerableVFX.SetActive(false);
+        }
     }
 
     private void Update()
     {
-        print(blackboard.death);
         if (!blackboard.enabledGame || blackboard.death)
             return;
        
@@ -308,12 +314,18 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     {
         blackboard.navMeshAgent.isStopped = true;
         blackboard.death = true;
+        GameManager.gameManager.bossesKilled.Add(id_boss);
         StartCoroutine(blackboard.FixDeathPos());
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
         blackboard.animator.SetTrigger(Death);
-        Destroy(gameObject, 7f);
+        StartCoroutine(Dissapear());
     }
 
+    IEnumerator Dissapear()
+    {
+        yield return new WaitForSeconds(7);
+        gameObject.SetActive(false);
+    }
     public void BeingHit()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);

@@ -37,6 +37,12 @@ namespace UI_and_Menus
         public void OnRestartGame()
         {
             Time.timeScale = 1;
+            GameManager.gameManager.bossesKilled.Clear();
+            SceneManager.LoadScene(1);
+        }
+        public void OnCheckPoint()
+        {
+            Time.timeScale = 1;
             SceneManager.LoadScene(1);
         }
 
