@@ -16,10 +16,14 @@ namespace Projectiles
 
         private ColorTypes _color;
         
-        private void Start()
+        private void Awake()
         {
-            if (Camera.main != null)
+
+            if (!(Camera.main is null))
             {
+                GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * projectileSpeed;
+            }
+            /*
                 Vector3 bulletDirection;
                 Transform cam = Camera.main.transform;
                 Ray ray = new Ray(cam.position, cam.forward);
@@ -36,6 +40,9 @@ namespace Projectiles
                 bulletDirection.Normalize();
                 GetComponent<Rigidbody>().velocity = bulletDirection * projectileSpeed;
             }
+            */
+            
+            
 
             _color = GetComponent<ColorEntity>().colorType;
             GetComponent<Renderer>().material = GetMaterial();

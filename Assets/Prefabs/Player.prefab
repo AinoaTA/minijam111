@@ -178,13 +178,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443648493461511950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.31, z: 1.42}
+  m_LocalRotation: {x: -0, y: -0.09390054, z: -0, w: 0.99558157}
+  m_LocalPosition: {x: 0.434, y: 0.252, z: 1.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 443648492234205503}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -10.776, z: 0}
 --- !u!1 &443648494184558630
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   invertedPitch: 0
   speed: 10
   speedMultiplier: 1
+  jumpSpeed: 5
   timeBetweenShots: 0.3
 --- !u!143 &443648494184558652
 CharacterController:
