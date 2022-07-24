@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance;
+
     [Header("Initial Spawn Data")]
     [SerializeField] private List<Transform> spawnPositionsList = new List<Transform>();
     [SerializeField] private float spawnPositionsRadius;
@@ -20,8 +22,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float maxDistance;
     [SerializeField] private float timeBetweenSpawns;
     [SerializeField] private List<GameObject> enemyPrefabList = new List<GameObject>();
+    
+    [Header("Enemy Wave Data")]
+    [SerializeField] private float waveMinDistance;
+    [SerializeField] private float waveMaxDistance;
+    [SerializeField] private int enemiesPerWave;
+    public bool burstWave = true;
+    [SerializeField] private float timeBetweenWaveSpawn;
 
-    private float _spawnTimer = 0f;
+    private bool _spawnWave;
+    private float _waveSpawnTimer;
+    private float _spawnTimer;
+    private int _waveSpawnCounter;
 
 
     private void OnDrawGizmosSelected()
@@ -38,11 +50,39 @@ public class EnemySpawner : MonoBehaviour
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(player.transform.position, maxDistance);
+        
+        
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(player.transform.position, waveMinDistance);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(player.transform.position, waveMaxDistance);
+    }
+
+    private void Awake()
+    {
+        if (Instance is null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     private void Start()
     {
         SceneStartSpawning();
+
+        if (waveMinDistance == 0) waveMinDistance = minDistance;
+        if (waveMaxDistance == 0) waveMaxDistance= maxDistance;
+
+        _spawnTimer = 0f;
+        _waveSpawnTimer = 0f;
+        _waveSpawnCounter = 0;
+        _spawnWave = false;
     }
 
     private void Update()
@@ -51,12 +91,42 @@ public class EnemySpawner : MonoBehaviour
 
         if (_spawnTimer >= timeBetweenSpawns)
         {
-            var randomRadius = Random.Range(minDistance, maxDistance);
-            var randomPosition = RandomNavMeshLocation(randomRadius);
 
+            var location = SpawnNear(player.transform, minDistance, maxDistance);
             var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
-            Instantiate(enemyPrefabList[randomEnemy], randomPosition, Quaternion.identity);
+            
+            Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity);
             _spawnTimer = 0f;
+        }
+
+        if (_spawnWave)
+        {
+            if (burstWave)
+            {
+                GenerateEnemyWave();
+            }
+            else
+            {
+                if (_waveSpawnCounter >= enemiesPerWave)
+                {
+                    _waveSpawnCounter = 0;
+                    _waveSpawnTimer = 0;
+                    _spawnWave = false;
+                }
+                else
+                {
+                    _waveSpawnTimer += Time.deltaTime;
+
+                    if (_waveSpawnTimer >= timeBetweenWaveSpawn)
+                    {
+                        var location = SpawnNear(player.transform, waveMinDistance, waveMaxDistance);
+                        var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+                        
+                        Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity); 
+                    }
+                    
+                }
+            }
         }
     }
     
@@ -66,11 +136,10 @@ public class EnemySpawner : MonoBehaviour
         {
             for(var i = 0; i < enemiesPerSpawnPosition; i++)
             {
-                var randomRadius = Random.Range(0.1f, spawnPositionsRadius);
-                var randomPos = RandomSceneStartLocation(spawnPos, randomRadius);
+                var location = SpawnNear(spawnPos, 0.1f, spawnPositionsRadius);
                 var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
                 
-                Instantiate(enemyPrefabList[randomEnemy], randomPos, Quaternion.identity);
+                Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity);
             }
         }
 
@@ -102,5 +171,46 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return Vector3.Distance(hit.position, player.transform.position) < minDistance ? RandomNavMeshLocation(Random.Range(minDistance, maxDistance)) : randomPoint;
+    }
+
+    private void GenerateEnemyWave()
+    {
+        for (int i = 0; i < enemiesPerWave; i++)
+        {
+            var location = SpawnNear(player.transform ,waveMinDistance, waveMaxDistance);
+            var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+                
+            Instantiate(enemyPrefabList[randomEnemy], location, Quaternion.identity);
+        }
+        
+        _waveSpawnTimer = 0f;
+        _spawnWave = false;
+    }
+
+    private Vector3 SpawnNear(Transform nearPosition, float minRadius, float maxRadius)
+    {
+        /*
+        var randomRadius = Random.Range(minRadius, maxRadius);
+        var randomPosition = RandomNavMeshLocation(randomRadius);
+
+        var randomEnemy = Random.Range(0, enemyPrefabList.Count - 1);
+        Instantiate(enemyPrefabList[randomEnemy], randomPosition, Quaternion.identity);
+        */
+        
+        var randomRadius = Random.Range(minRadius, maxRadius);
+        var randomDirection = Random.insideUnitSphere;
+        var randomPoint = player.transform.position + randomDirection * randomRadius;
+
+        if (NavMesh.SamplePosition(randomPoint, out var hit, randomRadius, 1))
+        {
+            randomPoint = hit.position;
+        }
+
+        return Vector3.Distance(hit.position, nearPosition.position) < minRadius ? SpawnNear(nearPosition, minRadius, maxRadius) : randomPoint;
+    }
+
+    public void SpawnWave()
+    {
+        _spawnWave = true;
     }
 }

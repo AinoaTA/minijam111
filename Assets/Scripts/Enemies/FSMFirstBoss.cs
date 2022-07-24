@@ -320,6 +320,9 @@ public class FSMFirstBoss : MonoBehaviour, IHit
         StartCoroutine(blackboard.FixDeathPos());
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", transform.position);
         blackboard.animator.SetTrigger(Death);
+        
+        EnemySpawner.Instance.SpawnWave();
+        
         StartCoroutine(Dissapear());
     }
 
