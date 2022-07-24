@@ -30,7 +30,7 @@ namespace Projectiles
                 }
                 else
                 {
-                    bulletDirection = (Camera.main.transform.position + Camera.main.transform.forward * 1000) - transform.position;
+                    bulletDirection = (Camera.main.transform.position + cam.forward * 1000) - transform.position;
                 }
 
                 bulletDirection.Normalize();
