@@ -21,4 +21,12 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void CheckBossesKilled()
+    {
+        if (bossesKilled.Count == 3)
+        {
+            
+        }
+    }
 }

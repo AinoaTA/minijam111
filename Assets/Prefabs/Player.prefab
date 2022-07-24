@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 443648494184558627}
   - component: {fileID: 443648494184558626}
   - component: {fileID: 6206997483388947828}
-  - component: {fileID: 1021407748432936751}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -333,36 +332,6 @@ MonoBehaviour:
       Data3: -1895765616
       Data4: 132824022
     Path: event:/Music/Gameplay
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &1021407748432936751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443648494184558630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 832976638
-      Data2: 1331653616
-      Data3: 1693190839
-      Data4: -164948112
-    Path: event:/Ambience/Nightmare
   Event: 
   PlayEvent: 1
   StopEvent: 2
