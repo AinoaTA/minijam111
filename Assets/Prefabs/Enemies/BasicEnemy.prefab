@@ -168,6 +168,7 @@ MonoBehaviour:
   raycastDistance: 10
   recoveryAttackTime: 1
   angle: 40
+  yPos: 0
   navMeshAgent: {fileID: 815536148657197125}
   player: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -176,11 +177,12 @@ MonoBehaviour:
   attacking: 0
   hit: 0
   death: 0
+  animator: {fileID: 0}
   isBoss: 0
   allBodiesMaterial:
-  - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
-  - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
-  - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
+  - {fileID: 2100000, guid: f258a77e9e640af45a9b7bc070a5fc22, type: 2}
+  - {fileID: 2100000, guid: 7a0d98b203086624693c7aed723a59ef, type: 2}
+  - {fileID: 2100000, guid: 499746208311bb846b8733437bc93c43, type: 2}
   bodyMaterial: {fileID: 7250842096887191928}
 --- !u!114 &815536148657197126
 MonoBehaviour:
