@@ -11,11 +11,15 @@ namespace Others {
         {
             if (other.CompareTag("Player") && !used)
             {
+                HealthSystem hp = other.GetComponent<HealthSystem>();
+                if (hp.currHealth >= hp.maxHealth)
+                    return;
+
                 particles.Play();
                 up.SetActive(false);
                 down.SetActive(false);
                 used = true;
-                other.GetComponent<HealthSystem>().GetHealing();
+                hp.GetHealing();
                 Destroy(gameObject, 1);
             }
         }
