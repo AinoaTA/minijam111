@@ -9,6 +9,7 @@ namespace UI_and_Menus
         FMOD.Studio.Bus Music;
         FMOD.Studio.EventInstance PauseAmb;
         float MusicVolume = 0.8f;
+        FMOD.Studio.EventInstance Night;
 
 
         private void Awake()
@@ -16,6 +17,7 @@ namespace UI_and_Menus
             canvas = GetComponent<CanvasGroup>();
             Music = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
             PauseAmb = FMODUnity.RuntimeManager.CreateInstance("event:/Ambience/Pause Menu");
+            Night = FMODUnity.RuntimeManager.CreateInstance("event:/Ambience/Nightmare");
         }
 
         public void MusicVolumeLevel(float newMusicVolume)
@@ -27,20 +29,26 @@ namespace UI_and_Menus
             Music.setVolume(MusicVolume);
             if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.gameManager.hudController.isGameOver)
             {
-                MusicVolume = 0f;
+                Night.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI/Click", transform.position);
+                MusicVolume = 0.2f;
                 GameManager.gameManager.hudController.isPause = !GameManager.gameManager.hudController.isPause;
                 GameManager.gameManager.hudController.UnlockMouse(GameManager.gameManager.hudController.isPause);
                 if(GameManager.gameManager.hudController.isPause)
                     GameManager.gameManager.hudController.ShowCanvasGroup(canvas);
                 else
+                {
+                    Night.start();
+                    MusicVolume = 0.8f;
                     GameManager.gameManager.hudController.HideCanvasGroup(canvas);
+                }
 
                 Time.timeScale = GameManager.gameManager.hudController.isPause ? 0 : 1;
             }
         }
         public void OnResumePressed()
         {
-            MusicVolume = 0.8f;
+            Night.start();
             GameManager.gameManager.hudController.HideCanvasGroup(canvas);
             GameManager.gameManager.hudController.Lock();
             GameManager.gameManager.hudController.isPause = false;
