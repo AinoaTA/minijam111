@@ -259,7 +259,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 08dbdf59b4439b14daed45c6c16c7275, type: 2}
   - {fileID: 2100000, guid: 6ef6c00bfd9eb704c9624d0dff1e1764, type: 2}
   - {fileID: 2100000, guid: c671bf4762d13ce4080845e419ade98e, type: 2}
+  allEyesColor:
+  - {r: 0.36632776, g: 0.8396226, b: 0.16158772, a: 1}
+  - {r: 0.08928439, g: 0.3641806, b: 0.8301887, a: 1}
+  - {r: 1, g: 0.17254902, b: 0, a: 0}
   bodyMaterial: {fileID: 858256327514861847}
+  eyeLights:
+  - {fileID: 7467435223500681039}
+  - {fileID: 742559466026175217}
 --- !u!114 &3329119531955133869
 MonoBehaviour:
   m_ObjectHideFlags: 0
