@@ -146,7 +146,7 @@ namespace Player
             
             
             //Reload
-            if (Input.GetKeyDown(ReloadKeyCode))
+            if (Input.GetKeyDown(ReloadKeyCode) || Input.GetMouseButtonDown(1))
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Switch Bullet", GetComponent<Transform>().position);
                 _weapon.ChangeWeaponColor();
