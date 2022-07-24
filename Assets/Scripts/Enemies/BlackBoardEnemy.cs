@@ -29,7 +29,9 @@ public class BlackBoardEnemy : MonoBehaviour
     [HideInInspector] public Animator animator;
     [SerializeField] private bool isBoss;
     [SerializeField] private Material[] allBodiesMaterial;
+    [SerializeField] private Color[] allEyesColor;
     [SerializeField] private Renderer bodyMaterial;
+    [SerializeField] private Light[] eyeLights;
     private ColorEntity colorEntity;
     private void Awake()
     {
@@ -54,6 +56,11 @@ public class BlackBoardEnemy : MonoBehaviour
     public void ChangeMaterial(ColorTypes color)
     {
         bodyMaterial.material = allBodiesMaterial[(int)color];
+
+        foreach (var eyeLight in eyeLights)
+        {
+            eyeLight.color = allEyesColor[(int)color];
+        }
     }
     public IEnumerator AttackRecovery()
     {
