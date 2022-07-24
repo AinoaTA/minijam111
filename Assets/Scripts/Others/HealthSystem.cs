@@ -6,8 +6,8 @@ namespace Others
 {
     public class HealthSystem : MonoBehaviour
     {
-        [SerializeField] private int maxHealth = 3;
-        private int currHealth;
+         public int maxHealth = 3;
+         public int currHealth { private set; get; }
         [SerializeField] private float cooldownTimer = 2f;
         [SerializeField] private Animator damage;
         
