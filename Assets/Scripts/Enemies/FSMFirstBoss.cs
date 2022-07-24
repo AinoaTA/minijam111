@@ -15,6 +15,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     [SerializeField] private float changeColorTime = 3.0f;
     [SerializeField] private float invulnerabilityTime = 5.0f;
     [SerializeField] private int maxHealth = 3;
+    [SerializeField] private float timeToDissapear = 5f;
 
     private ColorEntity _colorEntity;
     private float _currentHealth;
@@ -329,7 +330,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     IEnumerator Dissapear()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(timeToDissapear);
         gameObject.SetActive(false);
     }
     public void BeingHit()
