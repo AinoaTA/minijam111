@@ -201,7 +201,7 @@ public class FSMFirstBoss : MonoBehaviour, IHit
                 blackboard.animator.SetTrigger(Kick);
                 break;
         }
-
+        print("a");
         blackboard.attacking = true;
         blackboard.playerHealth.TakeDamage();
         StartCoroutine(blackboard.AttackRecovery());

@@ -45,6 +45,7 @@ public class BlackBoardEnemy : MonoBehaviour
     private void Start()
     {
         bodyMaterial.material = allBodiesMaterial[(int)colorEntity.colorType];
+        navMeshAgent.speed = speed;
     }
 
 
