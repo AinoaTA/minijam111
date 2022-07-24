@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2484da01fe286d498688c4644d3f9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDetectDistance: 20
+  minDetectDistance: 16
   minAttackDistance: 12.5
   minFollowingDistance: 20
   minWanderDistance: 7
