@@ -58,11 +58,13 @@ namespace UI_and_Menus
         {
             Time.timeScale = 1;
             GameManager.gameManager.bossesKilled.Clear();
+            GameManager.gameManager.hudController.UnlockMouse(false);
             SceneManager.LoadScene(1);
         }
         public void OnCheckPoint()
         {
             Time.timeScale = 1;
+            GameManager.gameManager.hudController.UnlockMouse(false);
             SceneManager.LoadScene(1);
         }
 

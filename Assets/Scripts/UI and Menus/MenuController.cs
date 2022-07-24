@@ -17,6 +17,9 @@ namespace Menu
 
         private void Start()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+
             mainMenuContainer.SetActive(true);
             settingsContainer.SetActive(false);
 
@@ -24,6 +27,8 @@ namespace Menu
             musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChanged(musicVolumeSlider.value); });
             effectsVolumeSlider.onValueChanged.AddListener(delegate { OnEffectsVolumeChanged(effectsVolumeSlider.value); });
         }
+
+        
 
         //MAIN MENU
         public void OnPlayPressed()

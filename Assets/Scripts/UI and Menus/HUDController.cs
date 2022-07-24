@@ -39,7 +39,7 @@ namespace UI_and_Menus
             {
                 StartCoroutine(TutorialDelay());
             }
-            UnlockMouse(true);
+            UnlockMouse(false);
         }
         /*public void MusicVolumeLevel(float newMusicVolume)
         {
