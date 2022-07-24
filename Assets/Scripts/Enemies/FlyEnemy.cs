@@ -26,7 +26,7 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     void Update()
     {
-        if (!blackboard.enabledGame || blackboard.hit)
+        if (!blackboard.enabledGame || blackboard.hit || blackboard.death)
             return;
 
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)

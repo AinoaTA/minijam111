@@ -12,7 +12,7 @@ namespace Projectiles
         public void InitializedProjectile(Vector3 dir)
         {
             GetComponent<Rigidbody>().velocity = dir * speed;
-            StartCoroutine(routine=DestroyAfterSeconds());
+            StartCoroutine(routine = DestroyAfterSeconds());
         }
 
         IEnumerator DestroyAfterSeconds()
