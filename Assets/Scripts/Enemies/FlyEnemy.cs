@@ -10,12 +10,12 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     public void Attacked()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Death", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Death", transform.position);
         Destroy(gameObject);
     }
     public void BeingHit()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/False Impact", transform.position);
         blackboard.attacking = true;
         GetDir();
     }
@@ -26,10 +26,11 @@ public class FlyEnemy : MonoBehaviour, IHit
 
     void Update()
     {
-        
-        if (!blackboard.enabledGame || blackboard.hit)
+        if (!blackboard.enabledGame|| blackboard.death)
             return;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Flying", GetComponent<Transform>().position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Flying", transform.position);
+        if (blackboard.hit)
+            return;
         if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)
         {
             GetDir();
