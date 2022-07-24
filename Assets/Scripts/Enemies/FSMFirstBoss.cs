@@ -76,9 +76,10 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Update()
     {
-        if (!blackboard.enabledGame)
+        print(blackboard.death);
+        if (!blackboard.enabledGame || blackboard.death)
             return;
-        
+       
         switch (state)
         {
             case StateMachine.IDLE:
@@ -305,9 +306,12 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Die()
     {
+        blackboard.navMeshAgent.isStopped = true;
+        blackboard.death = true;
+        StartCoroutine(blackboard.FixDeathPos(new Vector3(transform.position.x, -1.777f, transform.position.z)));
         FMODUnity.RuntimeManager.PlayOneShot("event:/NPCs/Boss Death", GetComponent<Transform>().position);
         animator.SetTrigger(Death);
-        Destroy(gameObject);
+        Destroy(gameObject, 7f);
     }
 
     public void BeingHit()
