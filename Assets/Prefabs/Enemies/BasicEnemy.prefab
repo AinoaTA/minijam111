@@ -175,12 +175,13 @@ MonoBehaviour:
   looking: 0
   attacking: 0
   hit: 0
+  death: 0
   isBoss: 0
-  allEyesMaterial:
+  allBodiesMaterial:
   - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
   - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
   - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
-  eyeMaterial: {fileID: 7250842096887191928}
+  bodyMaterial: {fileID: 7250842096887191928}
 --- !u!114 &815536148657197126
 MonoBehaviour:
   m_ObjectHideFlags: 0

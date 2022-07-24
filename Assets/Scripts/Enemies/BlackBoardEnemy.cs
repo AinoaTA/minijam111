@@ -17,18 +17,19 @@ public class BlackBoardEnemy : MonoBehaviour
     public float speed;
     public LayerMask layerMask;
     public float raycastDistance;
-    public float recoveryAttackTime=1;
-    [Range(0,360)]
+    public float recoveryAttackTime = 1;
+    [Range(0, 360)]
     public float angle;
+    [SerializeField] private float yPos;
     [HideInInspector] public NavMeshAgent navMeshAgent;
-    [HideInInspector]public GameObject player;
+    [HideInInspector] public GameObject player;
     [FormerlySerializedAs("playerHeal")] [HideInInspector] public HealthSystem playerHealth;
-    [HideInInspector] public bool enabledGame=true;
-    [HideInInspector] public bool looking, attacking, hit;
-
-     [SerializeField] private bool isBoss;
-    [SerializeField] private Material[] allEyesMaterial;
-    [SerializeField] private Renderer eyeMaterial;
+    [HideInInspector] public bool enabledGame = true;
+    [HideInInspector] public bool looking, attacking, hit, death;
+    public Animator animator;
+    [SerializeField] private bool isBoss;
+    [SerializeField] private Material[] allBodiesMaterial;
+    [SerializeField] private Renderer bodyMaterial;
     private ColorEntity colorEntity;
     private void Awake()
     {
@@ -40,12 +41,12 @@ public class BlackBoardEnemy : MonoBehaviour
 
     private void Start()
     {
-        eyeMaterial.material = allEyesMaterial[(int)colorEntity.colorType];
+        bodyMaterial.material = allBodiesMaterial[(int)colorEntity.colorType];
     }
 
     public void ChangeMaterial(ColorTypes color)
     {
-        eyeMaterial.material = allEyesMaterial[(int)color];
+        bodyMaterial.material = allBodiesMaterial[(int)color];
     }
     public IEnumerator AttackRecovery()
     {
@@ -64,5 +65,22 @@ public class BlackBoardEnemy : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
 
         return navHit.position;
+    }
+
+    public IEnumerator FixDeathPos(float estimatedTime = 0.2f, float animdDur = 2f)
+    {
+        yield return new WaitForSeconds(animdDur);
+        animator.enabled = false;
+        Vector3 currPos = bodyMaterial.transform.parent.transform.localPosition;
+        Vector3 newPos = currPos;
+        newPos.y = yPos;
+        float i = 0;
+        while (i < estimatedTime)
+        {
+            i += Time.deltaTime;
+            bodyMaterial.transform.parent.transform.localPosition = Vector3.Lerp(currPos, newPos, i / estimatedTime);
+            yield return null;
+        }
+        animator.enabled = true;
     }
 }

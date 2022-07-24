@@ -5579,7 +5579,7 @@ MonoBehaviour:
   changeColorTime: 3
   invulnerabilityTime: 5
   maxHealth: 3
-  animator: {fileID: 5728106422946770548}
+  _invulnerable: 0
   invulnerableVFX: {fileID: 5883973299200088187}
 --- !u!114 &9149394449136972739
 MonoBehaviour:
@@ -5607,6 +5607,7 @@ MonoBehaviour:
   raycastDistance: 10
   recoveryAttackTime: 1
   angle: 120
+  yPos: 0
   navMeshAgent: {fileID: 9149394449136972749}
   player: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -5614,12 +5615,14 @@ MonoBehaviour:
   looking: 0
   attacking: 0
   hit: 0
+  death: 0
+  animator: {fileID: 5728106422946770548}
   isBoss: 0
-  allEyesMaterial:
+  allBodiesMaterial:
   - {fileID: 2100000, guid: 6e77711b99ea31a44a14d8b73536a241, type: 2}
   - {fileID: 2100000, guid: 5e6494b4f7db207448c65d7935363434, type: 2}
   - {fileID: 2100000, guid: 6a108ba9fc7c9394684556bf182e6ae5, type: 2}
-  eyeMaterial: {fileID: 5165446464035101196}
+  bodyMaterial: {fileID: 5165446464035101196}
 --- !u!114 &9149394449136972737
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,11 +29,11 @@ public class FlyEnemy : MonoBehaviour, IHit
         if (!blackboard.enabledGame || blackboard.hit)
             return;
 
-        if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance && !blackboard.attacking)
+        if (Vector3.Distance(transform.position, blackboard.player.transform.position) < blackboard.minDetectDistance)
         {
             GetDir();
 
-            if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance)
+            if (Vector3.Distance(transform.position, blackboard.player.transform.position) <= blackboard.minAttackDistance && !blackboard.attacking)
             {
                 ThrowProjectile();
                 StartCoroutine(blackboard.AttackRecovery());
@@ -45,7 +45,6 @@ public class FlyEnemy : MonoBehaviour, IHit
                            blackboard.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete &&
                            blackboard.navMeshAgent.remainingDistance == 0)
             {
-                print("hola");
                 {
                     if (blackboard.attacking)
                     {
@@ -81,6 +80,4 @@ public class FlyEnemy : MonoBehaviour, IHit
         Vector3 correctedDir = dir.normalized + new Vector3(0, 0.1f, 0);
         projectile.InitializedProjectile(correctedDir);
     }
-
-
 }

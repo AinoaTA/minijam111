@@ -93,5 +93,13 @@ namespace UI_and_Menus
             Time.timeScale = 0;
             isGameOver = true;
         }
+
+        private void Update()
+        {
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.I))
+                GameOver();
+#endif
+        }
     }
 }

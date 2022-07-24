@@ -22,6 +22,8 @@ namespace UI_and_Menus
                     GameManager.gameManager.hudController.ShowCanvasGroup(canvas);
                 else
                     GameManager.gameManager.hudController.HideCanvasGroup(canvas);
+
+                Time.timeScale = GameManager.gameManager.hudController.isPause ? 0 : 1;
             }
         }
         public void OnResumePressed()
@@ -33,6 +35,12 @@ namespace UI_and_Menus
         }
 
         public void OnRestartGame()
+        {
+            Time.timeScale = 1;
+            GameManager.gameManager.bossesKilled.Clear();
+            SceneManager.LoadScene(1);
+        }
+        public void OnCheckPoint()
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(1);
