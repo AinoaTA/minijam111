@@ -22,7 +22,6 @@ public class FSMFirstBoss : MonoBehaviour, IHit
     private float _invulnerabilityTimer = 0.0f;
     private float _changeColorTimer = 0.0f;
     public bool _invulnerable;
-
     //[SerializeField] private Animator animator;
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int Punch = Animator.StringToHash("OnPunchTrigger");
@@ -314,6 +313,8 @@ public class FSMFirstBoss : MonoBehaviour, IHit
 
     private void Die()
     {
+        if (blackboard.death)
+            return;
         blackboard.navMeshAgent.isStopped = true;
         blackboard.death = true;
         GameManager.gameManager.bossesKilled.Add(id_boss);
